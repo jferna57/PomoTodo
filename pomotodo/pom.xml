@@ -12,7 +12,7 @@
 	<packaging>apk</packaging>
 	<name>PomoTodo</name>
 
-	<url>http://code.google.com/p/pomotodo/</url>
+	<url>https://github.com/jferna57/PomoTodo/</url>
 	<inceptionYear>2011</inceptionYear>
 
 	<properties>
@@ -22,7 +22,7 @@
 	<developers>
 		<developer>
 			<name>Juan C. Fernández</name>
-			<email>me@juancarlosfernandez.net</email>
+			<email>jferna57@gmail.com</email>
 			<url>http://www.juancarlosfernandez.net/</url>
 			<roles>
 				<role>Owner</role>
@@ -40,21 +40,20 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:hg:https://pomotodo.googlecode.com/hg/pomotodo</connection>
-		<developerConnection>scm:hg:https://pomotodo.googlecode.com/hg/pomotodo</developerConnection>
-		<url>https://pomotodo.googlecode.com/hg/pomotodo</url>
+		<connection>scm:git:git://github.com/jferna57/PomoTodo.git</connection>
+		<developerConnection>scm:git:git@github.com:jferna57/PomoTodo.git</developerConnection>
+		<url>http://github.com/jferna57/PomoTodo/tree/master</url>
 	</scm>
 
 	<issueManagement>
-		<system>Google Code</system>
-		<url>http://code.google.com/p/pomotodo/issues/list</url>
+		<system>github</system>
+		<url>https://github.com/jferna57/PomoTodo/issues</url>
 	</issueManagement>
 
 	<distributionManagement>
 		<repository>
-			<id>myRepoId</id>
-			<name>PomoTodo</name>
-			<url>/tmp</url>
+			<id>github.com</id>
+			<url>gitsite:git@github.com/jferna57/PomoTodo.git</url>
 		</repository>
 	</distributionManagement>
 
