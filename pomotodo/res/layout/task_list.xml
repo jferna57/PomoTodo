@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tasklist" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical"
+	android:background="@drawable/main_background">
+	
+	<LinearLayout android:id="@+id/task_layout"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:gravity="center_horizontal"
+		android:background="@drawable/today_background" 
+		android:orientation="horizontal"
+		android:paddingTop="1sp" 
+		android:paddingBottom="0sp">
+
+		<ListView android:id="@android:id/list"
+			android:layout_weight="1"
+			android:textSize="15.0sp"
+			android:choiceMode="multipleChoice"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" />
+		
+			
+	</LinearLayout>
+	
+	
+</LinearLayout>

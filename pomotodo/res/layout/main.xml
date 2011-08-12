@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/screen"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/main_background">
+       
+        <LinearLayout android:id="@+id/toodledo_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@drawable/today_background"
+                android:orientation="horizontal"
+                android:paddingTop="0sp"
+                android:paddingBottom="2sp">
+               
+                <TextView android:id="@+id/toodledo_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/toodledo_desc"
+                        android:textStyle="bold"
+                        android:textSize="15.0sp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/toodledo_actions_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@drawable/today_background"
+                android:orientation="horizontal"
+                android:paddingTop="0sp"
+                android:paddingBottom="2sp">
+
+                <RelativeLayout android:id="@+id/taks_selected_actions_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:gravity="center_horizontal">
+
+                        <ImageButton android:id="@+id/sync_button"
+                        android:src="@drawable/sync"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+         
+                        <ImageButton android:id="@+id/select_task_button"
+                        android:src="@drawable/search"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                        android:clickable="false"
+                        android:layout_toRightOf="@id/sync_button"/>      
+                                                                       
+                        <ImageButton android:id="@+id/clear_selected_tasks_button"
+                        android:src="@drawable/minus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:layout_toRightOf="@id/select_task_button"/>
+                   
+                        <ImageButton android:id="@+id/finish_tasks_button"
+                        android:src="@drawable/task_finish"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:layout_toRightOf="@id/clear_selected_tasks_button"/>
+                </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/tasks_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@drawable/today_background"
+                android:orientation="horizontal"
+                android:paddingTop="0sp"
+                android:paddingBottom="2sp">
+
+        <TextView android:id="@+id/task_list_label"
+                        android:text="@string/selected_tasks"
+                        android:textStyle="bold"
+                        android:paddingLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15.0sp" />
+        </LinearLayout>
+       
+        <LinearLayout android:id="@+id/task_buttons_layout"
+        android:orientation="vertical"
+        android:background="@drawable/today_background"
+        android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+       
+        <ListView android:layout_width="fill_parent"
+                        android:id="@+id/todo_list"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"/>
+       
+                <LinearLayout android:id="@+id/progress_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/progress_background"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp">
+                       
+                        <RelativeLayout android:id="@+id/yesterday_pomodoro_layout"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="5dp"
+                                android:gravity="center_horizontal">
+                               
+                                <TextView android:id="@+id/num_pomodoro_today_label"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/today_label"
+                                        android:textSize="20.0sp" />
+               
+                                <TextView android:id="@+id/num_pomodoro_today"
+                                        android:text="0"
+                                        android:textStyle="bold"
+                                        android:paddingLeft="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@id/num_pomodoro_today_label"
+                                        android:textSize="20.0sp" />
+       
+                        </RelativeLayout>
+       
+                        <RelativeLayout android:id="@+id/progress_time_layout"
+                                android:layout_width="fill_parent"
+                                android:layout_height="80dp">
+                               
+                                <ImageButton android:id="@+id/action_button"
+                                        android:src='@drawable/play'
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_centerVertical="true"
+                                        android:gravity="center_horizontal" />
+                                       
+                                <ProgressBar android:id="@+id/task_progress_bar"
+                                        style="?android:attr/progressBarStyleHorizontal"
+                                        android:progressDrawable="@drawable/task_progress_bar"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@id/action_button"
+                                        android:maxHeight="10dip"
+                                        android:minHeight="15dip"
+                                        android:paddingLeft="5dp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_centerInParent="true" />
+                               
+                                <TextView android:id="@+id/time_left"
+                                        android:text="@string/zeroTime"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_above="@id/task_progress_bar"
+                                        android:layout_toRightOf="@id/action_button"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:textSize="20.0sp"
+                                        android:gravity="right" />
+                                       
+       
+                        </RelativeLayout>
+                </LinearLayout>
+        </LinearLayout>
+</LinearLayout>

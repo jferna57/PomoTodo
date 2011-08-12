@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    type="sweep">
+  <gradient
+      android:startColor="@color/tomatoSauce"
+      android:centerColor="@color/tomatoSauce"
+      android:endColor="@color/tomatoSauce"
+      android:angle="0" />
+</shape>
+
