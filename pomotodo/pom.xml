@@ -8,7 +8,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.juancarlosfernandez</groupId>
 	<artifactId>pomotodo</artifactId>
-	<version>1.2.1</version>
+	<version>1.2.2-SNAPSHOT</version>
 	<packaging>apk</packaging>
 	<name>PomoTodo</name>
 
