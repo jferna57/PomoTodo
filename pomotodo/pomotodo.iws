@@ -63,64 +63,7 @@
     <favorites_list name="pomotodo" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="437" column="56" selection-start="12783" selection-end="12783" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#onCreate#0;class#Main#0" expanded="false" />
-                <element signature="method#onStart#0;class#Main#0" expanded="false" />
-                <element signature="method#onPause#0;class#Main#0" expanded="false" />
-                <element signature="method#onResume#0;class#Main#0" expanded="false" />
-                <element signature="method#onStop#0;class#Main#0" expanded="false" />
-                <element signature="method#onDestroy#0;class#Main#0" expanded="false" />
-                <element signature="method#populateTodoList#0;class#Main#0" expanded="false" />
-                <element signature="method#initFields#0;class#Main#0" expanded="false" />
-                <element signature="method#initButtons#0;class#Main#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
-                <element signature="method#onClick#0;class#Main#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#Main#0" expanded="false" />
-                <element signature="method#sync#0;class#Main#0" expanded="false" />
-                <element signature="method#askIfFinishSelectedTasks#0;class#Main#0" expanded="false" />
-                <element signature="method#askIfClearSelectedTasks#0;class#Main#0" expanded="false" />
-                <element signature="method#askIfSync#0;class#Main#0" expanded="false" />
-                <element signature="method#askIfResetHistory#0;class#Main#0" expanded="false" />
-                <element signature="method#clearSelectedTasks#0;class#Main#0" expanded="false" />
-                <element signature="method#finishSelectedTasks#0;class#Main#0" expanded="false" />
-                <element signature="method#resetTasks#0;class#Main#0" expanded="false" />
-                <element signature="method#actionStartOrStop#0;class#Main#0" expanded="false" />
-                <element signature="method#startTimer#0;class#Main#0" expanded="false" />
-                <element signature="method#playTicTac#0;class#Main#0" expanded="false" />
-                <element signature="method#addNotification#0;class#Main#0" expanded="false" />
-                <element signature="method#clearAllNotification#0;class#Main#0" expanded="false" />
-                <element signature="method#resetProgressBar#0;class#Main#0" expanded="false" />
-                <element signature="docComment;method#initializeProgressBar#0;class#Main#0" expanded="false" />
-                <element signature="method#initializeProgressBar#0;class#Main#0" expanded="false" />
-                <element signature="docComment;method#updateTimeAndProgressBar#0;class#Main#0" expanded="false" />
-                <element signature="method#updateTimeAndProgressBar#0;class#Main#0" expanded="false" />
-                <element signature="method#initializeTimeToFinish#0;class#Main#0" expanded="false" />
-                <element signature="method#onTimeFinish#0;class#Main#0" expanded="false" />
-                <element signature="method#showDialogOnEndTime#0;class#Main#0" expanded="false" />
-                <element signature="method#playSoundAndVibrate#0;class#Main#0" expanded="false" />
-                <element signature="method#setHistory#0;class#Main#0" expanded="false" />
-                <element signature="method#initHistory#0;class#Main#0" expanded="false" />
-                <element signature="method#resetPomodoros#0;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="51" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.5612903">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -137,13 +80,19 @@
         <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Prefs.java" />
         <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Preference.java" />
         <option value="$PROJECT_DIR$/res/xml/settings.xml" />
-        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Preferences.java" />
         <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/MusicManager.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/Pomodoro.java" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/PomodoroDB.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/TimeUtils.java" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/HistoryData.java" />
         <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Main.java" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/Constants.java" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/History.java" />
+        <option value="$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Preferences.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -157,6 +106,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../tools/maven" />
         <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
@@ -177,20 +127,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="PomoTodo" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="PomoTodo" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -237,7 +173,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Production" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages PackagesPane="true" ProjectPane="false" />
       <showMembers />
       <showModules />
@@ -249,6 +185,164 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Non-Project Files" />
+        <subPane subId="Problems" />
+        <subPane subId="Production">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="net/juancarlosfernandez/pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="view">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="net/juancarlosfernandez/pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="net/juancarlosfernandez/pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="db">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="net/juancarlosfernandez/pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="net/juancarlosfernandez/pomotodo">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="db">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -267,44 +361,44 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Non-Project Files" />
-        <subPane subId="Problems" />
-        <subPane subId="Tests" />
-        <subPane subId="Production">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pomotodo">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="pomotodo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pomotodo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pomotodo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -313,15 +407,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth1" value="81" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth2" value="87" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth0" value="73" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder2" value="2" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeWidth3" value="951" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_treeOrder3" value="3" />
@@ -332,37 +426,61 @@
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth2" value="88" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth1" value="82" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatWidth0" value="62" />
-    <property name="options.lastSelected" value="preferences.lookFeel" />
+    <property name="options.lastSelected" value="MavenSettings" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder3" value="3" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FileHistory.org.zmlx.hg4idea.provider.HgHistoryProvider_flatOrder2" value="2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Android Application.pomotodo">
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+    <configuration default="false" name="pomotodo [package]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="checksumPolicy" value="FAIL" />
+            <option name="failureBehavior" value="FAST" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="" />
+            <option name="nonRecursive" value="false" />
+            <option name="pluginUpdatePolicy" value="DO_NOT_UPDATE" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="snapshotUpdatePolicy" value="ALWAYS_UPDATE" />
+            <option name="usePluginRegistry" value="false" />
+            <option name="userSettingsFile" value="" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="jreName" value="#JAVA_INTERNAL" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -408,6 +526,28 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -524,8 +664,9 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android Application.pomotodo" />
+      <item index="1" class="java.lang.String" itemvalue="Maven.pomotodo [package]" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -534,7 +675,7 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value="SHOW_INHERITED,ALPHA_COMPARATOR" />
+    <option name="ACTIVE_ACTIONS" value="VISIBILITY_SORTER,SHOW_INHERITED,ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
@@ -563,31 +704,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-1" width="1280" height="801" extended-state="6" />
+    <frame x="0" y="-1" width="1290" height="781" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Archetypes" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33631194" sideWeight="0.34597877" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32575756" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven-2 Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.67223066" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39908952" sideWeight="0.49715677" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29090908" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="ConsoleMavenPlugin" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32776934" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287879" sideWeight="0.9643147" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="ConsoleMavenPlugin" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3272727" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2810723" sideWeight="0.60698026" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17518248" sideWeight="0.7030303" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967507" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24979724" sideWeight="0.27272728" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15896188" sideWeight="0.7030303" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39902675" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24087591" sideWeight="0.7030303" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24979724" sideWeight="0.4181818" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927817" sideWeight="0.7090909" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2969697" sideWeight="0.432279" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2969697" sideWeight="0.56123275" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2969697" sideWeight="0.4290349" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2969697" sideWeight="0.5644769" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287879" sideWeight="0.96999186" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -638,113 +779,96 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/toodledo/util/AuthToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="73" selection-start="402" selection-end="402" vertical-scroll-proportion="0.0" />
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/long_break.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/JkUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0" />
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/pomotodo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../tools/android-sdk/platforms/android-10/android.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="31" selection-start="242" selection-end="242" vertical-scroll-proportion="0.2184466" />
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/search.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/start.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/JkTimer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="40" selection-start="1550" selection-end="1550" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/xml/settings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="49" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/MusicManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="862" selection-end="862" vertical-scroll-proportion="0.85421413" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Preferences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="87" selection-start="987" selection-end="987" vertical-scroll-proportion="0.13667426" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="119" selection-start="268" selection-end="268" vertical-scroll-proportion="0.071428575" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="49" selection-start="122" selection-end="122" vertical-scroll-proportion="0.024193548">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/task_finish.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="5686" selection-end="5718" vertical-scroll-proportion="0.36290324">
+        <state line="84" column="82" selection-start="4987" selection-end="4987" vertical-scroll-proportion="0.034324944" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/Pomodoro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="1" selection-start="1324" selection-end="1324" vertical-scroll-proportion="0.8566879" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="88" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/util/TimeUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="29" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.33333334" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/HistoryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="5" selection-start="880" selection-end="880" vertical-scroll-proportion="0.6635071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="31" selection-start="162" selection-end="175" vertical-scroll-proportion="0.1421801">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/db/History.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="23" selection-start="2730" selection-end="2730" vertical-scroll-proportion="2.0080645">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="437" column="56" selection-start="12783" selection-end="12783" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#onCreate#0;class#Main#0" expanded="false" />
-            <element signature="method#onStart#0;class#Main#0" expanded="false" />
-            <element signature="method#onPause#0;class#Main#0" expanded="false" />
-            <element signature="method#onResume#0;class#Main#0" expanded="false" />
-            <element signature="method#onStop#0;class#Main#0" expanded="false" />
-            <element signature="method#onDestroy#0;class#Main#0" expanded="false" />
-            <element signature="method#populateTodoList#0;class#Main#0" expanded="false" />
-            <element signature="method#initFields#0;class#Main#0" expanded="false" />
-            <element signature="method#initButtons#0;class#Main#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
-            <element signature="method#onClick#0;class#Main#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#Main#0" expanded="false" />
-            <element signature="method#sync#0;class#Main#0" expanded="false" />
-            <element signature="method#askIfFinishSelectedTasks#0;class#Main#0" expanded="false" />
-            <element signature="method#askIfClearSelectedTasks#0;class#Main#0" expanded="false" />
-            <element signature="method#askIfSync#0;class#Main#0" expanded="false" />
-            <element signature="method#askIfResetHistory#0;class#Main#0" expanded="false" />
-            <element signature="method#clearSelectedTasks#0;class#Main#0" expanded="false" />
-            <element signature="method#finishSelectedTasks#0;class#Main#0" expanded="false" />
-            <element signature="method#resetTasks#0;class#Main#0" expanded="false" />
-            <element signature="method#actionStartOrStop#0;class#Main#0" expanded="false" />
-            <element signature="method#startTimer#0;class#Main#0" expanded="false" />
-            <element signature="method#playTicTac#0;class#Main#0" expanded="false" />
-            <element signature="method#addNotification#0;class#Main#0" expanded="false" />
-            <element signature="method#clearAllNotification#0;class#Main#0" expanded="false" />
-            <element signature="method#resetProgressBar#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#initializeProgressBar#0;class#Main#0" expanded="false" />
-            <element signature="method#initializeProgressBar#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#updateTimeAndProgressBar#0;class#Main#0" expanded="false" />
-            <element signature="method#updateTimeAndProgressBar#0;class#Main#0" expanded="false" />
-            <element signature="method#initializeTimeToFinish#0;class#Main#0" expanded="false" />
-            <element signature="method#onTimeFinish#0;class#Main#0" expanded="false" />
-            <element signature="method#showDialogOnEndTime#0;class#Main#0" expanded="false" />
-            <element signature="method#playSoundAndVibrate#0;class#Main#0" expanded="false" />
-            <element signature="method#setHistory#0;class#Main#0" expanded="false" />
-            <element signature="method#initHistory#0;class#Main#0" expanded="false" />
-            <element signature="method#resetPomodoros#0;class#Main#0" expanded="false" />
-          </folding>
+        <state line="178" column="0" selection-start="4924" selection-end="4924" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/Preferences.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="51" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.5612903">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="27" selection-start="340" selection-end="340" vertical-scroll-proportion="0.14516129">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/juancarlosfernandez/pomotodo/view/TaskListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="13" selection-start="1057" selection-end="1057" vertical-scroll-proportion="0.04118993">
           <folding />
         </state>
       </provider>

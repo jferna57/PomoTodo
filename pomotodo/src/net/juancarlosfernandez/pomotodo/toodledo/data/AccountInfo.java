@@ -20,7 +20,7 @@ package net.juancarlosfernandez.pomotodo.toodledo.data;
  * The first thing you should do each time you sync with Toodledo is to request
  * the user's account information. This will give you useful information about
  * the user, including various timestamps that you can use to determine if any
- * further action is necessary. If the timestamps havne changed, then the user's
+ * further action is necessary. If the timestamps have changed, then the user's
  * account hasn't changed and you do not need to sync antything.
  * 
  * For more information : http://api.toodledo.com/2/account/doc_info.php

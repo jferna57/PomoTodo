@@ -23,7 +23,7 @@ import net.juancarlosfernandez.pomotodo.R;
 
 public class MusicManager {
 
-    private static final String TAG = "MusicManager";
+    //private static final String TAG = "MusicManager";
 
     private static boolean isSilent = false;
 

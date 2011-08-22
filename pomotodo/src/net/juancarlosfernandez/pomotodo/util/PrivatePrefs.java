@@ -24,10 +24,6 @@ public class PrivatePrefs {
 	private static final String TAG = PrivatePrefs.class.getName();
 
 	// PRIVATE PREFERENCES
-	public static final String POMODOROS_TODAY = "prefPomodorosToday";
-	public static final String POMODOROS_TOTAL = "prefPomodorosTotal";
-	public static final String POMODOROS_LASTDAY = "prefPomodoroLastDay";
-	public static final String POMODOROS_RECORD = "prefPomodorosRecord";
 	public static final String TOODLEDO_TOKEN = "prefToodledoToken";
 
 	private SharedPreferences privatePrefs;
@@ -52,15 +48,6 @@ public class PrivatePrefs {
 
 	public void savePrivatePref(String privatePref, String value) {
 		privatePrefs.edit().putString(privatePref, value).commit();
-	}
-
-	public void savePomodoro(Pomodoro jkPomodoro) {
-		Log.d(TAG, "savePomodoroHistory");
-
-		savePrivatePref(POMODOROS_TODAY, "" + jkPomodoro.getPomodoroToday());
-		savePrivatePref(POMODOROS_TOTAL, "" + jkPomodoro.getPomodoroTotal());
-		savePrivatePref(POMODOROS_LASTDAY, "" + jkPomodoro.getLastPomodoroDay());
-		savePrivatePref(POMODOROS_RECORD, "" + jkPomodoro.getPomodoroRecord());
 	}
 
 	public void saveToodledo(JkToodledo jkToodledo) {
@@ -92,10 +79,6 @@ public class PrivatePrefs {
 	}
 
 	public void resetPrivatePrefs() {
-		savePrivatePref(POMODOROS_TODAY, null);
-		savePrivatePref(POMODOROS_TOTAL, null);
-		savePrivatePref(POMODOROS_LASTDAY, null);
-		savePrivatePref(POMODOROS_RECORD, null);
 		savePrivatePref(TOODLEDO_TOKEN, null);
 	}
 }

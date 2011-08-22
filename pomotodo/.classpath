@@ -3,7 +3,7 @@
 	<classpathentry kind="src" output="target/classes" path="src"/>
 	<classpathentry excluding="**" including="**/*.java" kind="src" output="target/classes" path="res"/>
 	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

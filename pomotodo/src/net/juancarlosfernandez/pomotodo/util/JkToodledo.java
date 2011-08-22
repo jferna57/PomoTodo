@@ -128,7 +128,7 @@ public class JkToodledo {
 		try {
 			todoList = tdApi.getTodosList(authToken);
 		} catch (ToodledoApiException e) {
-			Log.d(TAG, "PROBLEMA !! getTodos " + e.getMessage());
+			Log.d(TAG, "ERROR !! getTodos " + e.getMessage());
 		}
 		return todoList;
 	}

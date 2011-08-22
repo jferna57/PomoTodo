@@ -17,8 +17,6 @@
 
 package net.juancarlosfernandez.pomotodo.view;
 
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -28,6 +26,8 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 import net.juancarlosfernandez.pomotodo.R;
 import net.juancarlosfernandez.pomotodo.exception.SettingsConfigurationException;
+
+import java.util.regex.Pattern;
 
 /**
  * The Class Preferences.
@@ -63,7 +63,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
@@ -74,12 +74,11 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 		SharedPreferences sp = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		sp.registerOnSharedPreferenceChangeListener(this);
-	
 	}
 
 	/**
 	 * Check if it is necesary ring on finish time
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return true if music
@@ -100,7 +99,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Checks if is vibrate.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return true, if is vibrate
@@ -114,7 +113,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Gets the toodledo username.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return the toodledo username
@@ -138,7 +137,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Gets the toodledo password.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return the toodledo password
@@ -160,7 +159,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Gets the pomodoro duration.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return the pomodoro duration
@@ -176,7 +175,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Gets the rest duration.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return the rest duration
@@ -192,7 +191,7 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 
 	/**
 	 * Gets the long rest duration.
-	 * 
+	 *
 	 * @param context
 	 *            the context
 	 * @return the long rest duration
@@ -220,7 +219,8 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 		String result = sharedPrefs.getString(PREF_NUM_POMODOROS_UNTIL_LONG_REST, "1");
 
 		return Integer.parseInt(result);
-	}	
+	}
+
 	public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
 		if (key.equals(PREF_TOODLEDO_EMAIL)) {
 			// Search for a valid mail pattern

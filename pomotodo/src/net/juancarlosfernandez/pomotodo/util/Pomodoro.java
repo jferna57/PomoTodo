@@ -16,32 +16,14 @@
  */
 package net.juancarlosfernandez.pomotodo.util;
 
-import android.util.Log;
-
 public class Pomodoro {
 
-	private final String TAG = this.getClass().getName();
+	private boolean	isPomodoro	= true;
 
-	private int pomodoroToday = 0;
-	private int pomodoroTotal = 0;
-	private int pomodoroRecord = 0;
-	private String lastPomodoroDay = TimeUtils.RESET_DATE;
-	private boolean isPomodoro = true;
+	public Pomodoro() {
 
-	public Pomodoro(int numPomodorosToday, int numPomodorosTotal,
-			int numPomodorsoRecord, String lastPomodoroDay) {
-
-		this.pomodoroToday = numPomodorosToday;
-		this.pomodoroTotal = numPomodorosTotal;
-		this.pomodoroRecord = numPomodorsoRecord;
-		this.lastPomodoroDay = lastPomodoroDay;
-
-		if (!TimeUtils.isToday(lastPomodoroDay))
-			pomodoroToday = 0;
-
-		Log.d("lastPomodoroDay", lastPomodoroDay);
 	}
-	
+
 	public boolean isPomodoro() {
 		return isPomodoro;
 	}
@@ -50,77 +32,9 @@ public class Pomodoro {
 		this.isPomodoro = isPomodoro;
 	}
 
-	public int getPomodoroToday() {
-		return pomodoroToday;
-	}
+	public boolean isLongRest(int pomodorosToday, int numPomodorosUntilLongRest) {
 
-	public void setPomodoroToday(int pomodoroToday) {
-		this.pomodoroToday = pomodoroToday;
-	}
-
-	public int getPomodoroTotal() {
-		return pomodoroTotal;
-	}
-
-	public void setPomodoroTotal(int pomodoroTotal) {
-		this.pomodoroTotal = pomodoroTotal;
-	}
-
-	public String getLastPomodoroDay() {
-		return lastPomodoroDay;
-	}
-
-	public void setLastPomodoroDay(String lastPomodoroDay) {
-		this.lastPomodoroDay = lastPomodoroDay;
-	}
-
-	public void pomodoroFinish() {
-
-		// If day change
-		if (!lastPomodoroDay.equalsIgnoreCase(TimeUtils.getToday())) {
-			Log.d(TAG, "Dia distinto");
-
-			pomodoroToday = 0;
-			lastPomodoroDay = TimeUtils.getToday();
-		}
-
-		pomodoroToday++;
-		pomodoroTotal++;
-
-		// If Record!
-		if (pomodoroToday > pomodoroRecord)
-			pomodoroRecord = pomodoroToday;
-	}
-
-	/**
-	 * Check if you have working 4 times
-	 * 
-	 * @return true if you have 4 pomodoros false in another case
-	 */
-	public boolean isLongRest(int numPomodorosUntilLongRest) {
-
-		Log.d(TAG, "PomodoroToday = " + pomodoroToday);
-		
-		return (pomodoroToday % numPomodorosUntilLongRest == 0);
-	}
-
-	public void resetHistory() {
-
-		Log.d(TAG, "resetHistory");
-
-		setPomodoroToday(0);
-		setPomodoroTotal(0);
-		setPomodoroRecord(0);
-
-		setLastPomodoroDay(TimeUtils.RESET_DATE);
-	}
-
-	public int getPomodoroRecord() {
-		return pomodoroRecord;
-	}
-
-	public void setPomodoroRecord(int pomodoroRecord) {
-		this.pomodoroRecord = pomodoroRecord;
+		return ((pomodorosToday % numPomodorosUntilLongRest) == 0);
 	}
 
 }

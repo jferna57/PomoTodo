@@ -16,10 +16,22 @@
  */
 package net.juancarlosfernandez.pomotodo.view;
 
+import java.util.List;
+
 import net.juancarlosfernandez.pomotodo.R;
+import net.juancarlosfernandez.pomotodo.db.DataBaseHelper;
+import net.juancarlosfernandez.pomotodo.db.History;
+import net.juancarlosfernandez.pomotodo.db.Task;
 import net.juancarlosfernandez.pomotodo.exception.SettingsConfigurationException;
 import net.juancarlosfernandez.pomotodo.exception.ToodledoConnectionException;
-import net.juancarlosfernandez.pomotodo.util.*;
+import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
+import net.juancarlosfernandez.pomotodo.util.JkTasks;
+import net.juancarlosfernandez.pomotodo.util.JkTimer;
+import net.juancarlosfernandez.pomotodo.util.JkToodledo;
+import net.juancarlosfernandez.pomotodo.util.MusicManager;
+import net.juancarlosfernandez.pomotodo.util.Pomodoro;
+import net.juancarlosfernandez.pomotodo.util.PrivatePrefs;
+import net.juancarlosfernandez.pomotodo.util.TimeUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -46,21 +58,31 @@ import android.widget.Toast;
 
 public class Main extends Activity implements OnClickListener {
 
-	private final String TAG = this.getClass().getName();
+	private final String		TAG				= this.getClass().getName();
 
-	private final int NOTIFICATION_ID = 2;
-	private NotificationManager notificationMgr;
-	private JkTimer jkTimer = JkTimer.getObject();
-	private PrivatePrefs privatePrefs;
-	private Pomodoro pomodoro;
+	private final int			NOTIFICATION_ID	= 2;
+	private NotificationManager	notificationMgr;
+	private JkTimer				jkTimer			= JkTimer.getObject();
+	private PrivatePrefs		privatePrefs;
+	private Pomodoro			pomodoro;
 
-	private ImageButton actionButton;
-	private TextView timeLeft;
-	private ProgressBar myProgressBar;
-	private TextView numPomodoroToday;
+	private ImageButton			actionButton;
+	private TextView			timeLeft;
+	private ProgressBar			myProgressBar;
 
-	private ListView todoList;
-	
+	// History Text
+	private TextView			historyToday;
+	private TextView			historyMonth;
+	private TextView			historyYear;
+	private TextView			historyTotal;
+	private TextView			historyRecord;
+
+	// DB
+	private History				history;
+	private Task				tasks;
+
+	private ListView			todoList;
+
 	/**
 	 * The activity is being created.
 	 */
@@ -68,6 +90,11 @@ public class Main extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		// Initialize db
+		DataBaseHelper db = new DataBaseHelper(this);
+		history = new History(db);
+		tasks = new Task(db);
 
 		// Initialize fields
 		initButtons();
@@ -79,59 +106,57 @@ public class Main extends Activity implements OnClickListener {
 		privatePrefs = PrivatePrefs.getObject(getPreferences(MODE_PRIVATE));
 
 		// Update History
-		initHistory();
 		setHistory();
 
-        /* Populate todo List */
+		// Populate todo List
 		populateTodoList();
 	}
-	
+
 	/**
 	 * The activity is about to become visible.
 	 */
 	@Override
-	protected void onStart(){
-		Log.d(TAG,"onStart");
+	protected void onStart() {
+		Log.d(TAG, "onStart");
 		super.onStart();
 	}
+
 	/**
 	 * Another activity is taking focus (this activity is about to be "paused")
 	 */
 	@Override
 	protected void onPause() {
-		Log.d(TAG, "onPause");
-
-        MusicManager.getObject().silent();
 
 		super.onPause();
 
-		PrivatePrefs jkPrivatePrefs = PrivatePrefs.getObject(getPreferences(MODE_PRIVATE));
-		jkPrivatePrefs.savePomodoro(pomodoro);
+		Log.d(TAG, "onPause");
+
+		MusicManager.getObject().silent();
 	}
+
 	/**
 	 * The activity has become visible (it is now "resumed").
 	 */
 	@Override
 	protected void onResume() {
+		super.onResume();
+
 		Log.d(TAG, "onResume");
 
-        MusicManager.getObject().resume();
+		MusicManager.getObject().resume();
 
-		super.onResume();
 		populateTodoList();
 	}
-	
+
 	/**
 	 * The activity is no longer visible (it is now "stopped")
 	 */
 	@Override
 	protected void onStop() {
-		Log.d(TAG, "onStop");
 		super.onStop();
-
-		//stopTimer();
+		Log.d(TAG, "onStop");
 	}
-	
+
 	/**
 	 * The activity is about to be destroyed.
 	 */
@@ -139,26 +164,32 @@ public class Main extends Activity implements OnClickListener {
 	protected void onDestroy() {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
-		
+
 		stopTimer();
 	}
-
 
 	/**
 	 * Populate the todo list based on tasks selected on TodoTask
 	 */
 	private void populateTodoList() {
-		String[] selectedTasks = TodoTasks.getObject().getSelectedTasks();
+		String[] selectedTasks = JkTasks.getObject().getSelectedTasks();
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.task_entry, selectedTasks);
 		todoList.setAdapter(adapter);
 	}
 
 	private void initFields() {
+
 		timeLeft = (TextView) findViewById(R.id.time_left);
 		myProgressBar = (ProgressBar) findViewById(R.id.task_progress_bar);
-		numPomodoroToday = (TextView) findViewById(R.id.num_pomodoro_today);
 		todoList = (ListView) findViewById(R.id.todo_list);
+
+		// History fields
+		historyToday = (TextView) findViewById(R.id.history_today);
+		historyMonth = (TextView) findViewById(R.id.history_month);
+		historyYear = (TextView) findViewById(R.id.history_year);
+		historyTotal = (TextView) findViewById(R.id.history_total);
+		historyRecord = (TextView) findViewById(R.id.history_record);
 	}
 
 	private void initButtons() {
@@ -182,8 +213,8 @@ public class Main extends Activity implements OnClickListener {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.menu, menu);
+		MenuInflater menuInflater = getMenuInflater();
+		menuInflater.inflate(R.menu.menu, menu);
 		return true;
 	}
 
@@ -191,128 +222,134 @@ public class Main extends Activity implements OnClickListener {
 		Log.d(TAG, "onClick");
 
 		switch (v.getId()) {
-			case R.id.sync_button :
+			case R.id.sync_button:
 				askIfSync();
 				break;
-			case R.id.action_button :
+			case R.id.action_button:
 				actionStartOrStop();
 				break;
-			case R.id.clear_selected_tasks_button :
-				if ( todoList.getCount() > 0 )
+			case R.id.clear_selected_tasks_button:
+				if (todoList.getCount() > 0)
 					askIfClearSelectedTasks();
 				else
-					Toast.makeText(Main.this,"No tasks selected!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(Main.this, R.string.no_task_selected, Toast.LENGTH_SHORT).show();
 				break;
-			case R.id.finish_tasks_button :
-				if ( todoList.getCount() > 0 )
+			case R.id.finish_tasks_button:
+				if (todoList.getCount() > 0)
 					askIfFinishSelectedTasks();
 				else
-					Toast.makeText(Main.this,"No tasks selected!", Toast.LENGTH_SHORT).show();
-				
+					Toast.makeText(Main.this, R.string.no_task_selected_select_some, Toast.LENGTH_SHORT).show();
+
 				break;
-			case R.id.select_task_button :
-				if (! TodoTasks.getObject().isAllTodoListEmpty()){
+			case R.id.select_task_button:
+				if (!JkTasks.getObject().isAllTodoListEmpty()) {
 					Intent i = new Intent(this, TaskListView.class);
 					startActivity(i);
 				} else {
-					Toast.makeText(Main.this, "No task!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(Main.this, R.string.no_task_sync_toodledo, Toast.LENGTH_SHORT).show();
 				}
 				break;
-			default :
+			default:
 				break;
 		}
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Log.d(TAG, "onOptionsItemSelected");
 
 		switch (item.getItemId()) {
-			case R.id.settings :
+			case R.id.settings:
 				startActivity(new Intent(this, Preferences.class));
 				return true;
-			case R.id.about :
+			case R.id.about:
 				Intent i = new Intent(this, About.class);
 				startActivity(i);
 				return true;
-			case R.id.exit :
+			case R.id.exit:
 				finish();
 				return true;
-			case R.id.reset :
+			case R.id.reset:
 				askIfResetHistory();
 				return true;
 		}
 		return false;
 	}
 
-	protected void sync() {
+	protected void connectAndSync() {
 		Log.d(TAG, "sync");
 
-		String email, password;
-
-		resetTasks();
-
 		try {
-			email = Preferences.getToodledoUsername(getApplicationContext());
-
-			password = Preferences.getToodledoPassword(getApplicationContext());
-
+			// Recover email, password and sessiontoken from preferences
+			String email = Preferences.getToodledoUsername(getApplicationContext());
+			String password = Preferences.getToodledoPassword(getApplicationContext());
 			String sessionToken = privatePrefs.getStringValue(PrivatePrefs.TOODLEDO_TOKEN, null);
 
+			// Connect with toodledo service
 			JkToodledo jkToodledo = JkToodledo.getObject(email, password, sessionToken);
 			jkToodledo.connect();
 
+			// Save toodledo token in android private preferences
 			privatePrefs.savePrivatePref(PrivatePrefs.TOODLEDO_TOKEN, jkToodledo.getSessionToken());
 
-			TodoTasks.getObject().setAllTodoTasks(jkToodledo.getTodos());
+			// Get all tasks from toodledo service
+			List<Todo> todos = jkToodledo.getTodos();
+			resetTasks();
+			JkTasks.getObject().setAllTasks(todos);
 
-			Toast.makeText(Main.this, "Sync Done!", Toast.LENGTH_SHORT).show();
+			// Remove old tasks and insert new tasks in database
+			tasks.clearTasks();
+			tasks.addTasks(todos);
+
+			Toast.makeText(Main.this, R.string.sync_done, Toast.LENGTH_SHORT).show();
+
 		} catch (SettingsConfigurationException e) {
-			Toast.makeText(Main.this, "Settings Error!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(Main.this, R.string.settings_error + e.getMessage(), Toast.LENGTH_SHORT).show();
 		} catch (ToodledoConnectionException e) {
-			Toast.makeText(Main.this, "Connection Error!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(Main.this, R.string.connection_error + e.getMessage(), Toast.LENGTH_SHORT).show();
 		}
-
 	}
 
 	private void askIfFinishSelectedTasks() {
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this).setTitle(R.string.finish_tasks_question)
-				.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setMessage("Are you sure?").setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						finishSelectedTasks();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 	}
-	
+
 	private void askIfClearSelectedTasks() {
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this).setTitle(R.string.clear_tasks_question)
-				.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setMessage(R.string.are_you_sure)
+				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						clearSelectedTasks();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 	}
-	
+
 	private void askIfStopTimer() {
-		
+
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this).setTitle(R.string.stop_timer_question)
-				.setMessage("Are you sure?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setMessage(R.string.are_you_sure)
+				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						stopTimer();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
@@ -323,12 +360,12 @@ public class Main extends Activity implements OnClickListener {
 	private void askIfSync() {
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this)
-				.setTitle(R.string.toodledo_sync_question).setMessage("Are you sure?")
-				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setTitle(R.string.toodledo_sync_question).setMessage(R.string.are_you_sure)
+				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						sync();
+						connectAndSync();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
@@ -339,12 +376,12 @@ public class Main extends Activity implements OnClickListener {
 	private void askIfResetHistory() {
 
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this)
-				.setTitle(R.string.reset_history_question).setMessage("Are you sure?")
-				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setTitle(R.string.reset_history_question).setMessage(R.string.are_you_sure)
+				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						resetPomodoros();
+						resetHistory();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 					}
 				});
@@ -353,7 +390,7 @@ public class Main extends Activity implements OnClickListener {
 	}
 
 	private void clearSelectedTasks() {
-		TodoTasks.getObject().setAllTodoTasks(TodoTasks.getObject().getAllTodoTasks());
+		JkTasks.getObject().setAllTasks(JkTasks.getObject().getAllTasks());
 		populateTodoList();
 	}
 
@@ -369,23 +406,24 @@ public class Main extends Activity implements OnClickListener {
 			String sessionToken = privatePrefs.getStringValue(PrivatePrefs.TOODLEDO_TOKEN, null);
 
 			JkToodledo jkToodledo = JkToodledo.getObject(email, password, sessionToken);
-			jkToodledo.finishSelectedTodos(TodoTasks.getObject().getSelectedList());
+			jkToodledo.finishSelectedTodos(JkTasks.getObject().getSelectedList());
 
-			TodoTasks.getObject().removeSelectedItems();
+			JkTasks.getObject().removeSelectedItems();
 			populateTodoList();
 
-			Toast.makeText(Main.this, "Tasks finished!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(Main.this, R.string.task_finish, Toast.LENGTH_SHORT).show();
 
 		} catch (SettingsConfigurationException ex) {
-			Toast.makeText(Main.this, "Settings Error " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(Main.this, R.string.settings_error + ex.getMessage(), Toast.LENGTH_SHORT).show();
 		} catch (Exception ex) {
-			Toast.makeText(Main.this, "Unhandled Error " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+			Toast.makeText(Main.this, R.string.unhandled_error + ex.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 
 	}
 
 	private void resetTasks() {
-		TodoTasks.getObject().initAllTodoList();
+		Log.d(TAG, "resetTasks");
+		JkTasks.getObject().initAllTasks();
 		populateTodoList();
 	}
 
@@ -409,33 +447,23 @@ public class Main extends Activity implements OnClickListener {
 
 		if (pomodoro.isPomodoro()) {
 			minutes = Preferences.getPomodoroDuration(getApplicationContext());
-			// iconAction.setImageResource(R.drawable.play);
-
 		} else {
-			if (pomodoro.isLongRest(Preferences.getNumPomodorosUntilLongRest(getApplicationContext()))) {
+			int numPomodorosUntilLongRest = Preferences.getNumPomodorosUntilLongRest(getApplicationContext());
+			int pomodorosToday = history.getTotalToday();
+
+			if (pomodoro.isLongRest(pomodorosToday, numPomodorosUntilLongRest))
 				minutes = Preferences.getLongRestDuration(getApplicationContext());
-				// iconAction.setImageResource(R.drawable.long_break);
-			} else {
+			else
 				minutes = Preferences.getRestDuration(getApplicationContext());
-				// iconAction.setImageResource(R.drawable.pause);
-			}
-        }
+		}
 
 		initializeProgressBar(TimeUtils.minutesToSeconds(minutes));
 		jkTimer.start(this, minutes);
-		playTicTac();
-	}
-
-	private void playTicTac() {
-		Log.d(TAG, "stopTimer");
-		// TODO Auto-generated method stub
-
 	}
 
 	private void stopTimer() {
 		Log.d(TAG, "stopTimer");
 
-		// iconAction.setImageResource(R.drawable.stop);
 		actionButton.setImageResource(R.drawable.play);
 
 		initializeTimeToFinish();
@@ -480,21 +508,12 @@ public class Main extends Activity implements OnClickListener {
 		notificationMgr.cancelAll();
 	}
 
-	/**
-	 * Set progress bar to 0
-	 */
 	private void resetProgressBar() {
 		Log.d(TAG, "resetProgressBar");
 
 		myProgressBar.setProgress(0);
 	}
 
-	/**
-	 * Initialize progress bar values. Same values to max and progress
-	 * 
-	 * @param seconds
-	 *            : Initial seconds value
-	 */
 	private void initializeProgressBar(int seconds) {
 		Log.d(TAG, "initializeProgressBar");
 
@@ -503,16 +522,10 @@ public class Main extends Activity implements OnClickListener {
 		myProgressBar.setProgress(seconds);
 	}
 
-	/**
-	 * Update progress
-	 * 
-	 * @param secondsUntilFinished
-	 *            : New seconds value
-	 */
 	public void updateTimeAndProgressBar(int secondsUntilFinished) {
 		// Log.d(TAG, "updateTimeAndProgressBar");
-        if(Preferences.isTicTac(this))
-            MusicManager.getObject().play(this);
+		if (Preferences.isTicTac(this))
+			MusicManager.getObject().play(this);
 		timeLeft.setText(TimeUtils.secondsToMinutesAndSeconds(secondsUntilFinished));
 		myProgressBar.setProgress(secondsUntilFinished);
 	}
@@ -533,10 +546,15 @@ public class Main extends Activity implements OnClickListener {
 		playSoundAndVibrate();
 
 		if (pomodoro.isPomodoro()) {
-			pomodoro.pomodoroFinish();
+
+			history.addPomodoro(Preferences.getPomodoroDuration(getApplicationContext()));
+
 			setHistory();
-			
-			if (pomodoro.isLongRest(Preferences.getNumPomodorosUntilLongRest(getApplicationContext())))
+
+			int pomodorosUntilLongRest = Preferences.getNumPomodorosUntilLongRest(getApplicationContext());
+			int pomodorosToday = history.getTotalToday();
+
+			if (pomodoro.isLongRest(pomodorosToday, pomodorosUntilLongRest))
 				message = R.string.take_a_long_rest;
 			else
 				message = R.string.take_a_rest;
@@ -548,12 +566,12 @@ public class Main extends Activity implements OnClickListener {
 
 	private void showDialogOnEndTime(int message) {
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this).setTitle(R.string.what_do_you_want)
-				.setMessage(message).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				.setMessage(message).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						pomodoro.setIsPomodoro(!pomodoro.isPomodoro());
 						startTimer();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						stopTimer();
 					}
@@ -577,22 +595,18 @@ public class Main extends Activity implements OnClickListener {
 	}
 
 	private void setHistory() {
-		numPomodoroToday.setText("" + pomodoro.getPomodoroToday());
+		pomodoro = new Pomodoro();
+
+		historyToday.setText(new Integer(history.getTotalToday()).toString());
+		historyMonth.setText(new Integer(history.getTotalMonth()).toString());
+		historyYear.setText(new Integer(history.getTotalYear()).toString());
+		historyTotal.setText(new Integer(history.getTotal()).toString());
+		historyRecord.setText(new Integer(history.getRecord()).toString());
+		// historyRecord.setText(new Integer(TimeUtils.getWeek()).toString());
 	}
 
-	private void initHistory() {
-
-		int numPomodorosToday = privatePrefs.getIntValue(PrivatePrefs.POMODOROS_TODAY, 0);
-		int numPomodorosTotal = privatePrefs.getIntValue(PrivatePrefs.POMODOROS_TOTAL, 0);
-		int numPomodorosRecord = privatePrefs.getIntValue(PrivatePrefs.POMODOROS_RECORD, 0);
-		String lastPomodoroDay = privatePrefs.getStringValue(PrivatePrefs.POMODOROS_LASTDAY, "0");
-
-		pomodoro = new Pomodoro(numPomodorosToday, numPomodorosTotal, numPomodorosRecord, lastPomodoroDay);
-	}
-
-	private void resetPomodoros() {
-		pomodoro.resetHistory();
-		privatePrefs.resetPrivatePrefs();
+	private void resetHistory() {
+		history.resetHistory();
 		setHistory();
 	}
 }

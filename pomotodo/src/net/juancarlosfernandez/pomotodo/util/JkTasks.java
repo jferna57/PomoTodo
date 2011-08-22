@@ -16,68 +16,64 @@
  */
 package net.juancarlosfernandez.pomotodo.util;
 
-import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoTasks {
+import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
 
-	private List<Todo> allTodoList;
-	private List<Boolean> selectedList;
+public class JkTasks {
+
+	private List<Todo>		allTodoList;
+	private List<Boolean>	selectedList;
 
 	// Singleton object
-	private static TodoTasks todoTasks;
+	private static JkTasks	todoTasks;
 
-	private TodoTasks() {
-		initAllTodoList();
+	private JkTasks() {
+		initAllTasks();
 	}
 
-	public static synchronized TodoTasks getObject() {
+	public static synchronized JkTasks getObject() {
 
-		if (todoTasks == null) {
-			todoTasks = new TodoTasks();
-		}
+		if (todoTasks == null)
+			todoTasks = new JkTasks();
 		return todoTasks;
 	}
 
 	public Object clone() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException();
 	}
-	
-	public void initAllTodoList() {
+
+	public void initAllTasks() {
 		this.allTodoList = new ArrayList<Todo>();
 		this.selectedList = new ArrayList<Boolean>();
 	}
 
-	public List<Todo> getAllTodoTasks() {
+	public List<Todo> getAllTasks() {
 		return allTodoList;
 	}
 
-	public void setAllTodoTasks(List<Todo> todoList) {
-		initAllTodoList();
-		
+	public void setAllTasks(List<Todo> todoList) {
+		initAllTasks();
+
 		this.allTodoList = todoList;
-		setSelectedTodoTasks(todoList);
+		setSelectedTasks(todoList);
 	}
 
-
-	private void setSelectedTodoTasks(List<Todo> todoList) {
+	private void setSelectedTasks(List<Todo> todoList) {
 		selectedList.clear();
-		for (int i = 0; i < todoList.size(); i++) {
+		for (int i = 0; i < todoList.size(); i++)
 			this.selectedList.add(false);
-		}
 	}
-	
-	public void changeClickedTask(int pos){
+
+	public void changeClickedTask(int pos) {
 		changeSelectedPosition(pos);
 	}
-	
-	
-	public void changeClickedTask(Todo clickedTask){
+
+	public void changeClickedTask(Todo clickedTask) {
 		changeSelectedPosition(findTaskPosition(clickedTask));
 	}
-	
+
 	private void changeSelectedPosition(int position) {
 		selectedList.set(position, !selectedList.get(position));
 	}
@@ -85,9 +81,9 @@ public class TodoTasks {
 	private int findTaskPosition(Todo clickedTask) {
 		int result = -1;
 		boolean found = false;
-		
-		for( int i =0 ; i < allTodoList.size() && !found; i ++){
-			if (allTodoList.get(i).getId() == clickedTask.getId()){
+
+		for (int i = 0; i < allTodoList.size() && !found; i++) {
+			if (allTodoList.get(i).getId() == clickedTask.getId()) {
 				result = i;
 				found = true;
 			}
@@ -104,14 +100,14 @@ public class TodoTasks {
 		}
 
 		String[] result = new String[tmpList.size()];
-		
+
 		for (int i = 0; i < result.length; i++) {
 			result[i] = tmpList.get(i);
 		}
 		return result;
 	}
-	
-	public CharSequence[] getAllTasks(){
+
+	public CharSequence[] getAllTasksNames() {
 
 		CharSequence[] result = new CharSequence[allTodoList.size()];
 
@@ -119,9 +115,8 @@ public class TodoTasks {
 			result[i] = allTodoList.get(i).getTitle();
 		}
 		return result;
-		
 	}
-	
+
 	public List<Todo> getNotSelectedList() {
 		List<Todo> result = new ArrayList<Todo>();
 
@@ -131,7 +126,7 @@ public class TodoTasks {
 		}
 		return result;
 	}
-	
+
 	public List<Todo> getSelectedList() {
 		List<Todo> result = new ArrayList<Todo>();
 
@@ -149,10 +144,9 @@ public class TodoTasks {
 
 	public void removeSelectedItems() {
 
-		for (int i = 0; i < selectedList.size(); i++) {
+		for (int i = 0; i < selectedList.size(); i++)
 			if (selectedList.get(i))
 				removeItem(i);
-		}
 	}
 
 	public static String[] todosToString(List<Todo> todoList) {
@@ -164,22 +158,20 @@ public class TodoTasks {
 			todoTitles[i] = _tmp.getTitle();
 			i++;
 		}
-
 		return todoTitles;
 	}
-	
-	public boolean isAllTodoListEmpty(){
+
+	public boolean isAllTodoListEmpty() {
 		if (allTodoList.isEmpty())
 			return true;
 		else
 			return false;
 	}
-	
-	public boolean isSelectedTaskEmpty(){
+
+	public boolean isSelectedTaskEmpty() {
 		if (selectedList.isEmpty())
 			return true;
 		else
 			return false;
 	}
-
 }
