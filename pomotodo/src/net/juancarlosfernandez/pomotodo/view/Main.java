@@ -25,12 +25,12 @@ import net.juancarlosfernandez.pomotodo.db.Task;
 import net.juancarlosfernandez.pomotodo.exception.SettingsConfigurationException;
 import net.juancarlosfernandez.pomotodo.exception.ToodledoConnectionException;
 import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
-import net.juancarlosfernandez.pomotodo.util.JkTasks;
 import net.juancarlosfernandez.pomotodo.util.JkTimer;
 import net.juancarlosfernandez.pomotodo.util.JkToodledo;
 import net.juancarlosfernandez.pomotodo.util.MusicManager;
 import net.juancarlosfernandez.pomotodo.util.Pomodoro;
 import net.juancarlosfernandez.pomotodo.util.PrivatePrefs;
+import net.juancarlosfernandez.pomotodo.util.StringUtils;
 import net.juancarlosfernandez.pomotodo.util.TimeUtils;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -172,7 +172,8 @@ public class Main extends Activity implements OnClickListener {
 	 * Populate the todo list based on tasks selected on TodoTask
 	 */
 	private void populateTodoList() {
-		String[] selectedTasks = JkTasks.getObject().getSelectedTasks();
+		List<Todo> selectedListTasks = tasks.getTasks(true);
+		String[] selectedTasks = StringUtils.todosToString(selectedListTasks);
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.task_entry, selectedTasks);
 		todoList.setAdapter(adapter);
@@ -242,7 +243,7 @@ public class Main extends Activity implements OnClickListener {
 
 				break;
 			case R.id.select_task_button:
-				if (!JkTasks.getObject().isAllTodoListEmpty()) {
+				if (tasks.getCount(false) > 0) {
 					Intent i = new Intent(this, TaskListView.class);
 					startActivity(i);
 				} else {
@@ -295,7 +296,6 @@ public class Main extends Activity implements OnClickListener {
 			// Get all tasks from toodledo service
 			List<Todo> todos = jkToodledo.getTodos();
 			resetTasks();
-			JkTasks.getObject().setAllTasks(todos);
 
 			// Remove old tasks and insert new tasks in database
 			tasks.clearTasks();
@@ -331,7 +331,7 @@ public class Main extends Activity implements OnClickListener {
 				.setMessage(R.string.are_you_sure)
 				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						clearSelectedTasks();
+						resetTasks();
 					}
 				}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
@@ -389,11 +389,6 @@ public class Main extends Activity implements OnClickListener {
 		alertDialog.show();
 	}
 
-	private void clearSelectedTasks() {
-		JkTasks.getObject().setAllTasks(JkTasks.getObject().getAllTasks());
-		populateTodoList();
-	}
-
 	private void finishSelectedTasks() {
 		Log.d(TAG, "finishSelectedTasks");
 
@@ -406,9 +401,9 @@ public class Main extends Activity implements OnClickListener {
 			String sessionToken = privatePrefs.getStringValue(PrivatePrefs.TOODLEDO_TOKEN, null);
 
 			JkToodledo jkToodledo = JkToodledo.getObject(email, password, sessionToken);
-			jkToodledo.finishSelectedTodos(JkTasks.getObject().getSelectedList());
+			jkToodledo.finishSelectedTodos(tasks.getTasks(true));
 
-			JkTasks.getObject().removeSelectedItems();
+			tasks.removeSelectedTasks();
 			populateTodoList();
 
 			Toast.makeText(Main.this, R.string.task_finish, Toast.LENGTH_SHORT).show();
@@ -423,7 +418,7 @@ public class Main extends Activity implements OnClickListener {
 
 	private void resetTasks() {
 		Log.d(TAG, "resetTasks");
-		JkTasks.getObject().initAllTasks();
+		tasks.resetSelectedTasks();
 		populateTodoList();
 	}
 

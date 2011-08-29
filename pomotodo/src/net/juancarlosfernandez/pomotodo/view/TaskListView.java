@@ -20,8 +20,10 @@ package net.juancarlosfernandez.pomotodo.view;
 import java.util.List;
 
 import net.juancarlosfernandez.pomotodo.R;
+import net.juancarlosfernandez.pomotodo.db.DataBaseHelper;
+import net.juancarlosfernandez.pomotodo.db.Task;
 import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
-import net.juancarlosfernandez.pomotodo.util.JkTasks;
+import net.juancarlosfernandez.pomotodo.util.StringUtils;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,8 +35,8 @@ import android.widget.ListView;
  */
 public class TaskListView extends ListActivity {
 
-	private JkTasks	todoTasks;
-	List<Todo>			notSelectedTasksList;
+	private Task	task;
+	List<Todo>		notSelectedTasksList;
 
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -42,18 +44,18 @@ public class TaskListView extends ListActivity {
 
 		setContentView(R.layout.task_list);
 
-		todoTasks = JkTasks.getObject();
+		task = new Task(new DataBaseHelper(this));
 
-		notSelectedTasksList = todoTasks.getNotSelectedList();
+		notSelectedTasksList = task.getTasks(false);
 
 		if (notSelectedTasksList != null) {
-			String[] allTodoTitles = JkTasks.todosToString(notSelectedTasksList);
+			String[] allTodoTitles = StringUtils.todosToString(notSelectedTasksList);
 			setListAdapter(new ArrayAdapter<String>(this, R.layout.my_simple_list_item_multiple_choice, allTodoTitles));
 		}
 	}
 
 	public void onListItemClick(ListView parent, View v, int position, long id) {
 		Todo clickedTask = notSelectedTasksList.get(position);
-		JkTasks.getObject().changeClickedTask(clickedTask);
+		task.changeClickedTask(clickedTask);
 	}
 }

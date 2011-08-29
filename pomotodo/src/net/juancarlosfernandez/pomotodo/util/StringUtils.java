@@ -14,14 +14,24 @@
  *  limitations under the License.
  *
  */
-package net.juancarlosfernandez.pomotodo.exception;
+package net.juancarlosfernandez.pomotodo.util;
 
-public class SettingsConfigurationException extends Exception {
+import java.util.List;
 
-	public SettingsConfigurationException(String substring) {
-		super(substring);
+import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
+
+public class StringUtils {
+
+	public static String[] todosToString(List<Todo> todoList) {
+
+		String[] todoTitles = new String[todoList.size()];
+
+		int i = 0;
+		for (Todo _tmp : todoList) {
+			todoTitles[i] = _tmp.getTitle();
+			i++;
+		}
+		return todoTitles;
 	}
-
-	private static final long	serialVersionUID	= 1L;
 
 }

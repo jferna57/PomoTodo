@@ -64,5 +64,6 @@ public interface Constants extends BaseColumns {
 	public static final String	TASK_TIMERON		= "timerOn";
 	public static final String	TASK_NOTE			= "note";
 	public static final String	TASK_META			= "meta";
+	public static final String	TASK_IS_SELECTED	= "is_selected";
 
 }

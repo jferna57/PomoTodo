@@ -33,6 +33,7 @@ import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_DUETIME;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_FOLDER;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_GOAL;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_ID_TOODLEDO;
+import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_IS_SELECTED;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_LENGTH;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_LOCATION;
 import static net.juancarlosfernandez.pomotodo.db.Constants.TASK_META;
@@ -84,10 +85,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 			db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORY);
 			createTableHistory(db);
 			createTableTask(db);
-		} else if (newVersion == 3) {
-			db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASK);
-			createTableHistory(db);
-		}
+		} else
+			if (newVersion == 3) {
+				db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASK);
+				createTableHistory(db);
+			}
 	}
 
 	private void createTableTask(SQLiteDatabase db) {
@@ -108,7 +110,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 				+ " INTEGER," + TASK_STATUS + " INTEGER," + TASK_LENGTH + " INTEGER," + TASK_PRIORITY + " INTEGER,"
 				+ TASK_STAR + " INTEGER," + TASK_MODIFIED + " STRING," + TASK_COMPLETED + " INTEGER," + TASK_ADDED
 				+ " STRING," + TASK_TIMER + " INTEGER," + TASK_TIMERON + " STRING," + TASK_NOTE + " STRING,"
-				+ TASK_META + " STRING" + ");");
+				+ TASK_META + " STRING," + TASK_IS_SELECTED + " INTEGER" + ");");
 
 	}
 }
