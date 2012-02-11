@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">PomoTodo</string>
+
+	<!-- Toodledo actions -->
+	<string name="toodledo_desc">Toodledo Actions</string>
+
+	<!-- History table -->
+	<string name="history_today_label">Today</string>
+	<string name="history_yesterday_label">Yesterday</string>
+	<string name="history_record_label">Record</string>
+	<string name="history_month_label">Month</string>
+	<string name="history_year_label">Year</string>
+	<string name="history_total_label">Total</string>
+	<string name="history">History</string>
+
+	<!-- Actions Button -->
+	<string name="start_action">Start</string>
+	<string name="stop_action">Stop</string>
+	<string name="finish_tasks_action">Finish Tasks</string>
+
+	<string name="zeroTime">00:00</string>
+	<string name="zero">00</string>
+	<string name="selected_tasks">Todo Tasks</string>
+	<string name="toodledo_actions">Toodledo Actions</string>
+
+	<!-- Notification -->
+	<string name="finish">Finish!</string>
+	<string name="no_task_selected">No tasks selected!</string>
+	<string name="no_task_selected_select_some">No tasks selected! Please select some tasks.</string>
+	<string name="no_task_sync_toodledo">No task. Do you sync with toodledo?</string>
+	<string name="task_finish">Tasks finished!</string>
+	<string name="settings_error">Settings Error </string>
+	<string name="unhandled_error">Unhandled Error </string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="sync_done">Sync Done!</string>
+	<string name="connection_error">Connection Error!</string>
+
+	<!-- Questions -->
+	<string name="clear_tasks_question">Clear Tasks?</string>
+	<string name="toodledo_sync_question">Sync with Toodledo?</string>
+	<string name="reset_history_question">Reset History?</string>
+	<string name="finish_tasks_question">Finish Tasks?</string>
+	<string name="stop_timer_question">Stop Timer?</string>
+
+	<!-- What are you doing -->
+	<string name="working">Work:</string>
+	<string name="breaking">Break:</string>
+	<string name="long_breaking">Long Break:</string>
+	<string name="nothing">Nothing:</string>
+
+	<string name="what_do_you_want">What do you want?</string>
+	<string name="take_a_rest">Take a rest?</string>
+	<string name="take_a_long_rest">Take a long rest?</string>
+	<string name="another_pomodoro">Another pomodoro?</string>
+
+	<string name="time_remaining_label">Time Remaining..</string>
+	<string name="what_are_i_doing_label">What are I doing?</string>
+	<string name="what_are_i_doing">What are I doing?</string>
+
+	<!-- Estadistics -->
+	<string name="today_label">Today :</string>
+	<string name="total_label">Total</string>
+	<string name="record_label">Record</string>
+	<string name="doing_now_label">Now</string>
+
+	<string name="are_you_sure">Are you sure?</string>
+
+	<!-- About -->
+	<string name="about_title">PomoTodo</string>
+	<string name="about_text">
+		<p>PomoTodo is an android application to help you tu use Pomodoro
+			Technique.</p>
+		<p>PomoTodo sync with toodledo service to manage your tasks. (Visit
+			www.toodledo.com)</p>
+	</string>
+
+	<string name="task_list_view_title">Toodledo Tasks</string>
+
+	<!-- -->
+	<string name="start">Lets Go!</string>
+	<string name="stop">Stop Pomodoros</string>
+
+	<!-- Settings -->
+	<string name="settings_label">Settings</string>
+	<string name="settings_shortcut">s</string>
+	<string name="reset_label">Reset</string>
+	<string name="reset_shortcut">r</string>
+	<string name="about_label">About</string>
+	<string name="about_shortcut">a</string>
+	<string name="history_label">History</string>
+	<string name="history_shortcut">h</string>
+	<string name="exit_label">Exit</string>
+	<string name="exit_shortcut">e</string>
+	<string name="sync_label">Sync</string>
+	<string name="sync_shortcut">y</string>
+
+	<!-- Preferences -->
+	<string name="settings_title">Settings</string>
+	<string name="prefPomodoroDurationTitle">Pomodoro Duration</string>
+	<string name="prefPomodoroDurationDesc">Duration of the Pomodoro</string>
+	<string name="prefPomodoroDurationDialog">Pomodoro Duration Dialog</string>
+
+	<string name="prefRestDurationTitle">Break Duration</string>
+	<string name="prefRestDurationDesc">Break bettewen Pomodoro</string>
+	<string name="prefRestDurationDialog">Break bettewen Pomodoro Dialog</string>
+
+	<string name="prefLongRestDurationTitle">Long Break Duration</string>
+	<string name="prefLongRestDurationDesc">Long Break bettewen Pomodoro</string>
+	<string name="prefLongRestDurationDialog">Long Break bettewen Pomodoro Dialog</string>
+
+	<string name="prefVibrateTitle">Vibrate</string>
+	<string name="prefVibrateDesc">Vibrate on finish?</string>
+
+	<string name="prefRingTitle">Ring?</string>
+	<string name="prefRingDesc">Ring on finish?</string>
+
+	<string name="prefTictacTitle">Tic tac?</string>
+	<string name="prefTictacDesc">Tic tac during pomodoro?</string>
+
+	<string name="prefToodledoEmailTitle">Email</string>
+	<string name="prefToodledoEmailDesc">Toodledo email</string>
+
+	<string name="prefToodledoPasswordTitle">Password</string>
+	<string name="prefToodledoPasswordDesc">Toodledo password</string>
+
+	<string name="prefNumPomodoroUntilLongRestDesc">Number of Pomodoros until long break</string>
+	<string name="prefNumPomodoroUntilLongRestTitle">Pomodoros until long break</string>
+</resources>
