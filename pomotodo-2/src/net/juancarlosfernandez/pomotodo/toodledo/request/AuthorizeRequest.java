@@ -26,7 +26,7 @@ import net.juancarlosfernandez.pomotodo.util.JkUtils;
 
 public class AuthorizeRequest extends Request {
 
-	private static final String URL = "http://api.toodledo.com/2/account/token.php?userid=";
+	private static final String URL = "https://api.toodledo.com/2/account/token.php?userid=";
 
 	public AuthorizeRequest(String userId) {
 		super();
