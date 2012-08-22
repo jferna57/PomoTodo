@@ -58,6 +58,9 @@
   </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/gen" includeSubdirectories="true" />
+    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="?*.properties" />
@@ -391,19 +394,16 @@
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+  </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="FacetAutodetectingManager">
-    <autodetection-disabled>
-      <facet-type id="android">
-        <modules>
-          <module name="pomotodo" />
-        </modules>
-      </facet-type>
-    </autodetection-disabled>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="android" url="file://$PROJECT_DIR$" />
   </component>
+  <component name="IdProvider" IDEtalkID="51F9D542E2F7E0E0027AB82786A7BCEB" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
     <option name="OPTION_SCOPE" value="protected" />
@@ -597,6 +597,15 @@
       </item>
     </group>
   </component>
+  <component name="ProjectCodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS">
+      <value>
+        <XML>
+          <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+        </XML>
+      </value>
+    </option>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/pomotodo.iml" filepath="$PROJECT_DIR$/pomotodo.iml" />
@@ -611,6 +620,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="hg4idea" />
   </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="libraryTable">
     <library name="Maven: com.google.android:android:2.3.3">
       <CLASSES>
