@@ -113,10 +113,7 @@ public class Main extends Activity implements OnClickListener {
     protected void onPause() {
 
         super.onPause();
-
         Log.d(TAG, "onPause");
-
-        MusicManager.getObject().silent();
     }
 
     /**
@@ -125,11 +122,7 @@ public class Main extends Activity implements OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-
         Log.d(TAG, "onResume");
-
-        MusicManager.getObject().resume();
-
         populateTodoList();
     }
 
@@ -504,8 +497,6 @@ public class Main extends Activity implements OnClickListener {
 
     public void updateTimeAndProgressBar(int secondsUntilFinished) {
         // Log.d(TAG, "updateTimeAndProgressBar");
-        if (Preferences.isTicTac(this))
-            MusicManager.getObject().play(this);
         timeLeft.setText(TimeUtils.secondsToMinutesAndSeconds(secondsUntilFinished));
         myProgressBar.setProgress(secondsUntilFinished);
     }

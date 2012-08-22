@@ -65,11 +65,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
     public static final String PREF_RING = "prefRing";
 
     /**
-     * The Constant PREF_TICTAC.
-     */
-    public static final String PREF_TICTAC = "prefTicTac";
-
-    /**
      * The Constant PREF_TOODLEDO_EMAIL.
      */
     public static final String PREF_TOODLEDO_EMAIL = "prefToodledoEmail";
@@ -105,13 +100,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
         return sharedPrefs.getBoolean(PREF_RING, false);
-    }
-
-    public static boolean isTicTac(Context context) {
-
-        SharedPreferences sharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(context);
-        return sharedPrefs.getBoolean(PREF_TICTAC, false);
     }
 
     /**
