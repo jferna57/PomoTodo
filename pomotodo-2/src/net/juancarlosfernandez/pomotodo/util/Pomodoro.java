@@ -18,23 +18,23 @@ package net.juancarlosfernandez.pomotodo.util;
 
 public class Pomodoro {
 
-	private boolean	isPomodoro	= true;
+    private boolean isPomodoro = true;
 
-	public Pomodoro() {
+    public Pomodoro() {
 
-	}
+    }
 
-	public boolean isPomodoro() {
-		return isPomodoro;
-	}
+    public boolean isPomodoro() {
+        return isPomodoro;
+    }
 
-	public void setIsPomodoro(boolean isPomodoro) {
-		this.isPomodoro = isPomodoro;
-	}
+    public void setIsPomodoro(boolean isPomodoro) {
+        this.isPomodoro = isPomodoro;
+    }
 
-	public boolean isLongRest(int pomodorosToday, int numPomodorosUntilLongRest) {
+    public boolean isLongRest(int pomodorosToday, int numPomodorosUntilLongRest) {
 
-		return ((pomodorosToday % numPomodorosUntilLongRest) == 0);
-	}
+        return ((pomodorosToday % numPomodorosUntilLongRest) == 0);
+    }
 
 }

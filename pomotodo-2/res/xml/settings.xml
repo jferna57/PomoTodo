@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<PreferenceCategory android:title="General">
-		
-		<EditTextPreference android:key="prefPomodoroDuration"
-			android:title="@string/prefPomodoroDurationTitle"
-			android:defaultValue="20" 
-			android:summary="@string/prefPomodoroDurationDesc" 
-			android:shouldDisableView="false" 
-			android:persistent="true"
-			android:inputType="number" />
-		
-		<EditTextPreference android:key="prefLongRestDuration"
-			android:title="@string/prefLongRestDurationTitle"
-			android:defaultValue="15" 
-			android:summary="@string/prefLongRestDurationDesc" 
-			android:shouldDisableView="false" 
-			android:persistent="true"
-			android:inputType="number" />
-			
-		<EditTextPreference android:key="prefRestDuration"
-			android:title="@string/prefRestDurationTitle"
-			android:defaultValue="5" 
-			android:summary="@string/prefRestDurationDesc"  
-			android:shouldDisableView="false" 
-			android:persistent="true"
-			android:inputType="number" />
-		
-		<EditTextPreference android:key="prefNumPomodoroUntilLongRest"
-			android:title="@string/prefNumPomodoroUntilLongRestTitle"
-			android:defaultValue="4" 
-			android:summary="@string/prefNumPomodoroUntilLongRestDesc" 
-			android:shouldDisableView="false" 
-			android:persistent="true"
-			android:inputType="number" />
-		
-	</PreferenceCategory>
+    <PreferenceCategory android:title="General">
 
-	<PreferenceCategory android:title="Notification">
-	
-		<CheckBoxPreference android:key="prefVibrate"
-        	android:title="@string/prefVibrateTitle"
-        	android:summary="@string/prefVibrateDesc"
-        	android:defaultValue="true"
-        	android:persistent="true" />
+        <EditTextPreference android:key="prefPomodoroDuration"
+                            android:title="@string/prefPomodoroDurationTitle"
+                            android:defaultValue="20"
+                            android:summary="@string/prefPomodoroDurationDesc"
+                            android:shouldDisableView="false"
+                            android:persistent="true"
+                            android:inputType="number"/>
 
-		<CheckBoxPreference android:key="prefRing"
-        	android:title="@string/prefRingTitle"
-        	android:summary="@string/prefRingDesc"
-        	android:defaultValue="true"
-        	android:persistent="true" />
+        <EditTextPreference android:key="prefLongRestDuration"
+                            android:title="@string/prefLongRestDurationTitle"
+                            android:defaultValue="15"
+                            android:summary="@string/prefLongRestDurationDesc"
+                            android:shouldDisableView="false"
+                            android:persistent="true"
+                            android:inputType="number"/>
 
-		<CheckBoxPreference android:key="prefTicTac"
-        	android:title="@string/prefTictacTitle"
-        	android:summary="@string/prefTictacDesc"
-        	android:defaultValue="true"
-        	android:persistent="true" />
+        <EditTextPreference android:key="prefRestDuration"
+                            android:title="@string/prefRestDurationTitle"
+                            android:defaultValue="5"
+                            android:summary="@string/prefRestDurationDesc"
+                            android:shouldDisableView="false"
+                            android:persistent="true"
+                            android:inputType="number"/>
 
-	</PreferenceCategory>	
+        <EditTextPreference android:key="prefNumPomodoroUntilLongRest"
+                            android:title="@string/prefNumPomodoroUntilLongRestTitle"
+                            android:defaultValue="4"
+                            android:summary="@string/prefNumPomodoroUntilLongRestDesc"
+                            android:shouldDisableView="false"
+                            android:persistent="true"
+                            android:inputType="number"/>
 
-	<PreferenceCategory android:title="Toodledo">
-		
-		<EditTextPreference android:key="prefToodledoEmail" 
-			android:title="@string/prefToodledoEmailTitle"
-        	android:summary="@string/prefToodledoEmailDesc"
-        	android:persistent="true"/>
-		
-		<EditTextPreference android:key="prefToodledoPassword" 
-			android:title="@string/prefToodledoPasswordTitle" 
-			android:summary="@string/prefToodledoPasswordDesc"
-			android:password="true"
-			android:persistent="true"/>
+    </PreferenceCategory>
 
-	</PreferenceCategory>	
+    <PreferenceCategory android:title="Notification">
+
+        <CheckBoxPreference android:key="prefVibrate"
+                            android:title="@string/prefVibrateTitle"
+                            android:summary="@string/prefVibrateDesc"
+                            android:defaultValue="true"
+                            android:persistent="true"/>
+
+        <CheckBoxPreference android:key="prefRing"
+                            android:title="@string/prefRingTitle"
+                            android:summary="@string/prefRingDesc"
+                            android:defaultValue="true"
+                            android:persistent="true"/>
+
+        <CheckBoxPreference android:key="prefTicTac"
+                            android:title="@string/prefTictacTitle"
+                            android:summary="@string/prefTictacDesc"
+                            android:defaultValue="true"
+                            android:persistent="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Toodledo">
+
+        <EditTextPreference android:key="prefToodledoEmail"
+                            android:title="@string/prefToodledoEmailTitle"
+                            android:summary="@string/prefToodledoEmailDesc"
+                            android:persistent="true"/>
+
+        <EditTextPreference android:key="prefToodledoPassword"
+                            android:title="@string/prefToodledoPasswordTitle"
+                            android:summary="@string/prefToodledoPasswordDesc"
+                            android:password="true"
+                            android:persistent="true"/>
+
+    </PreferenceCategory>
 </PreferenceScreen>

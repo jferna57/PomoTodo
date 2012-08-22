@@ -23,98 +23,98 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class TimeUtils {
-	
-	private static final String TAG = "JkTimerUtils";
-	
-	public static final String RESET_DATE = "01-01-2000";
-	
-	public static final int MILISECONDS = 1000;
-	
-	public static final int MINUTES_MILISECONDS = 60*1000;
-	
-	public static final int MINUTES_SECONDS = 60;
 
-	public static int milisecondsToSeconds(long miliseconds){
+    private static final String TAG = "JkTimerUtils";
 
-	    return (int) miliseconds/MILISECONDS;
-	}
+    public static final String RESET_DATE = "01-01-2000";
 
-	public static int minutesToSeconds(int minutes) {
+    public static final int MILISECONDS = 1000;
 
-		return minutes*MINUTES_SECONDS;
-	}
+    public static final int MINUTES_MILISECONDS = 60 * 1000;
 
-	public static long minutesToMiliseconds(int minutes) {
+    public static final int MINUTES_SECONDS = 60;
 
-		long result = (long) minutes*MINUTES_MILISECONDS;
-		
-		return result;
-	}
-	
-	public static String secondsToMinutesAndSeconds(int secondsUntilFinish){
+    public static int milisecondsToSeconds(long miliseconds) {
 
-		int minutes = secondsToMinutes(secondsUntilFinish);
-		int seconds = secondsUntilFinish - minutes*MINUTES_SECONDS;
-		
-		return normalizeTime(minutes) + " : " + normalizeTime(seconds);
-	}
-	
-	private static String normalizeTime(int time) {
-		
-		if (time < 10)
-			return "0" + time;
-		else
-			return "" + time;
-	}
-
-	private static int secondsToMinutes(int seconds) {
-
-		return seconds/MINUTES_SECONDS;
-	}
-
-    public static String getWeek(){
-        DateFormat dateFormat = new SimpleDateFormat("ww");
-		Calendar cal = Calendar.getInstance();
-
-		Log.d(TAG, "week " + dateFormat.format(cal.getTime()));
-
-		return dateFormat.format(cal.getTime());
+        return (int) miliseconds / MILISECONDS;
     }
-	
-	public static String getMonth(){
-		DateFormat dateFormat = new SimpleDateFormat("MM");
-		Calendar cal = Calendar.getInstance();
-		
-		Log.d(TAG, dateFormat.format(cal.getTime()));
-		
-		return dateFormat.format(cal.getTime());
-	}
-	
-	public static String getDay(){
-		DateFormat dateFormat = new SimpleDateFormat("dd");
-		Calendar cal = Calendar.getInstance();
-		
-		Log.d(TAG, dateFormat.format(cal.getTime()));
-		
-		return dateFormat.format(cal.getTime());
-	}
-	
-	public static String getYear(){
-		DateFormat dateFormat = new SimpleDateFormat("yyyy");
-		Calendar cal = Calendar.getInstance();
-		
-		Log.d(TAG, dateFormat.format(cal.getTime()));
-		
-		return dateFormat.format(cal.getTime());
-	}
-	
-	public static String getDate() {
-		
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		Calendar cal = Calendar.getInstance();
-		
-		Log.d(TAG, dateFormat.format(cal.getTime()));
-		
-		return dateFormat.format(cal.getTime());
-	}
+
+    public static int minutesToSeconds(int minutes) {
+
+        return minutes * MINUTES_SECONDS;
+    }
+
+    public static long minutesToMiliseconds(int minutes) {
+
+        long result = (long) minutes * MINUTES_MILISECONDS;
+
+        return result;
+    }
+
+    public static String secondsToMinutesAndSeconds(int secondsUntilFinish) {
+
+        int minutes = secondsToMinutes(secondsUntilFinish);
+        int seconds = secondsUntilFinish - minutes * MINUTES_SECONDS;
+
+        return normalizeTime(minutes) + " : " + normalizeTime(seconds);
+    }
+
+    private static String normalizeTime(int time) {
+
+        if (time < 10)
+            return "0" + time;
+        else
+            return "" + time;
+    }
+
+    private static int secondsToMinutes(int seconds) {
+
+        return seconds / MINUTES_SECONDS;
+    }
+
+    public static String getWeek() {
+        DateFormat dateFormat = new SimpleDateFormat("ww");
+        Calendar cal = Calendar.getInstance();
+
+        Log.d(TAG, "week " + dateFormat.format(cal.getTime()));
+
+        return dateFormat.format(cal.getTime());
+    }
+
+    public static String getMonth() {
+        DateFormat dateFormat = new SimpleDateFormat("MM");
+        Calendar cal = Calendar.getInstance();
+
+        Log.d(TAG, dateFormat.format(cal.getTime()));
+
+        return dateFormat.format(cal.getTime());
+    }
+
+    public static String getDay() {
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        Calendar cal = Calendar.getInstance();
+
+        Log.d(TAG, dateFormat.format(cal.getTime()));
+
+        return dateFormat.format(cal.getTime());
+    }
+
+    public static String getYear() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy");
+        Calendar cal = Calendar.getInstance();
+
+        Log.d(TAG, dateFormat.format(cal.getTime()));
+
+        return dateFormat.format(cal.getTime());
+    }
+
+    public static String getDate() {
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar cal = Calendar.getInstance();
+
+        Log.d(TAG, dateFormat.format(cal.getTime()));
+
+        return dateFormat.format(cal.getTime());
+    }
 }

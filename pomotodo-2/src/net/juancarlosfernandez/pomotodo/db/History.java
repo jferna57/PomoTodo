@@ -33,7 +33,7 @@ public class History {
     private static String CONDITION_WEEK = "WEEK = " + TimeUtils.getWeek();
     private static String AND = " AND ";
 
-    private static final String[] MAX_POMODORO={"max(pomodoros)"};
+    private static final String[] MAX_POMODORO = {"max(pomodoros)"};
     private static final String FROM_MAX_POMODORO = "(select count(*) as pomodoros from history group by date)";
 
     public History(DataBaseHelper dbHelper) {
@@ -135,7 +135,7 @@ public class History {
 
         cursor = db.query(FROM_MAX_POMODORO, MAX_POMODORO, null, null, null, null, null);
 
-        try{
+        try {
             return cursor.moveToNext() ? cursor.getInt(0) : 0;
         } finally {
             cursor.close();

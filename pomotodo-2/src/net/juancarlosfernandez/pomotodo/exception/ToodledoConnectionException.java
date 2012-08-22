@@ -17,22 +17,25 @@
 package net.juancarlosfernandez.pomotodo.exception;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class ToodledoConnectionException.
  */
 public class ToodledoConnectionException extends Exception {
 
 
-	/**
-	 * Instantiates a new toodledo connection exception.
-	 *
-	 * @param substring the substring
-	 */
-	public ToodledoConnectionException(String substring) {
-		super(substring);
-	}
+    /**
+     * Instantiates a new toodledo connection exception.
+     *
+     * @param substring the substring
+     */
+    public ToodledoConnectionException(String substring) {
+        super(substring);
+    }
 
-	/** The Constant serialVersionUID. */
-	private static final long serialVersionUID = 1L;
+    /**
+     * The Constant serialVersionUID.
+     */
+    private static final long serialVersionUID = 1L;
 
 }

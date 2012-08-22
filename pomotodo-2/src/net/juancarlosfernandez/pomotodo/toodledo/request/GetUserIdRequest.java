@@ -16,41 +16,41 @@
  */
 package net.juancarlosfernandez.pomotodo.toodledo.request;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
+import android.util.Log;
 import net.juancarlosfernandez.pomotodo.toodledo.data.Constants;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.ToodledoApiException;
 import net.juancarlosfernandez.pomotodo.toodledo.response.GetUserIdResponse;
 import net.juancarlosfernandez.pomotodo.toodledo.response.Response;
 import net.juancarlosfernandez.pomotodo.util.JkUtils;
-import android.util.Log;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 public class GetUserIdRequest extends Request {
 
-	private final String TAG = this.getClass().getName();
+    private final String TAG = this.getClass().getName();
 
-	private static final String URL = "http://api.toodledo.com/2/account/lookup.php?f=xml;appid=";
+    private static final String URL = "http://api.toodledo.com/2/account/lookup.php?f=xml;appid=";
 
-	public GetUserIdRequest(String email, String password) throws ToodledoApiException {
-		super();
-		try {
-			String sig = JkUtils.MD5(email + Constants.APP_TOKEN);
-			this.url = URL + Constants.APP_ID+ ";sig=" + sig + ";email=" + email + ";pass=" + password;
+    public GetUserIdRequest(String email, String password) throws ToodledoApiException {
+        super();
+        try {
+            String sig = JkUtils.MD5(email + Constants.APP_TOKEN);
+            this.url = URL + Constants.APP_ID + ";sig=" + sig + ";email=" + email + ";pass=" + password;
 
-		} catch (NoSuchAlgorithmException e) {
-			Log.d(TAG, "Problem!! NoSuchAlgorithException");
-		} catch (UnsupportedEncodingException e) {
-			Log.d(TAG, "Problem!! UnsupportedEncodingException");
-		}
+        } catch (NoSuchAlgorithmException e) {
+            Log.d(TAG, "Problem!! NoSuchAlgorithException");
+        } catch (UnsupportedEncodingException e) {
+            Log.d(TAG, "Problem!! UnsupportedEncodingException");
+        }
 
-	}
+    }
 
-	@Override
-	public Response getResponse() {
-		this.exec();
-		GetUserIdResponse response = new GetUserIdResponse(this.xmlResponse);
-		return response;
-	}
+    @Override
+    public Response getResponse() {
+        this.exec();
+        GetUserIdResponse response = new GetUserIdResponse(this.xmlResponse);
+        return response;
+    }
 
 }

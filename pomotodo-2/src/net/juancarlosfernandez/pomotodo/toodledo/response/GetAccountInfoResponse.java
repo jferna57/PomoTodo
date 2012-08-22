@@ -18,8 +18,8 @@ package net.juancarlosfernandez.pomotodo.toodledo.response;
 
 public class GetAccountInfoResponse extends Response {
 
-	public GetAccountInfoResponse(String resp) {
-		super(resp);
-	}
+    public GetAccountInfoResponse(String resp) {
+        super(resp);
+    }
 
 }

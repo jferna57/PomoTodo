@@ -17,9 +17,9 @@
 package net.juancarlosfernandez.pomotodo.toodledo.response;
 
 public class AuthorizeResponse extends Response {
-	
-	public AuthorizeResponse(String resp) {
-		super(resp);
-	}
+
+    public AuthorizeResponse(String resp) {
+        super(resp);
+    }
 
 }

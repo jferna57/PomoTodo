@@ -16,41 +16,41 @@
  */
 package net.juancarlosfernandez.pomotodo.toodledo.request;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 import net.juancarlosfernandez.pomotodo.toodledo.data.Constants;
 import net.juancarlosfernandez.pomotodo.toodledo.response.AuthorizeResponse;
 import net.juancarlosfernandez.pomotodo.toodledo.response.Response;
 import net.juancarlosfernandez.pomotodo.util.JkUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 public class AuthorizeRequest extends Request {
 
-	private static final String URL = "https://api.toodledo.com/2/account/token.php?userid=";
+    private static final String URL = "https://api.toodledo.com/2/account/token.php?userid=";
 
-	public AuthorizeRequest(String userId) {
-		super();
-		url = URL + userId;
+    public AuthorizeRequest(String userId) {
+        super();
+        url = URL + userId;
 
-		url = url + ";appid=" + Constants.APP_ID;
-		url = url + ";device=" + Constants.APP_DEVICE;
+        url = url + ";appid=" + Constants.APP_ID;
+        url = url + ";device=" + Constants.APP_DEVICE;
 
-		try {
-			url = url + ";sig=" + JkUtils.MD5(userId + Constants.APP_TOKEN) + ";f=xml";
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            url = url + ";sig=" + JkUtils.MD5(userId + Constants.APP_TOKEN) + ";f=xml";
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	public Response getResponse() {
-		this.exec();
-		AuthorizeResponse response = new AuthorizeResponse(this.xmlResponse);
-		return response;
-	}
+    @Override
+    public Response getResponse() {
+        this.exec();
+        AuthorizeResponse response = new AuthorizeResponse(this.xmlResponse);
+        return response;
+    }
 
 }

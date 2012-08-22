@@ -18,8 +18,8 @@ package net.juancarlosfernandez.pomotodo.toodledo.response;
 
 public class GetUserIdResponse extends Response {
 
-	public GetUserIdResponse(String resp) {
-		super(resp);
-	}
+    public GetUserIdResponse(String resp) {
+        super(resp);
+    }
 
 }

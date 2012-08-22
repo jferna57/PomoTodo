@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="net.juancarlosfernandez.pomotodo"
-	android:versionCode="170"
-	android:versionName="1.7.0">
+          package="net.juancarlosfernandez.pomotodo"
+          android:versionCode="170"
+          android:versionName="1.7.0">
 
-   <!--  android:versionCode="${parsedVersion.majorVersion}${parsedVersion.minorVersion}${parsedVersion.incrementalVersion}" -->
-	<uses-sdk android:minSdkVersion="7" />
+    <!--  android:versionCode="${parsedVersion.majorVersion}${parsedVersion.minorVersion}${parsedVersion.incrementalVersion}" -->
+    <uses-sdk android:minSdkVersion="7"/>
 
-	<application android:icon="@drawable/pomotodo"
-		android:label="@string/app_name" 
-		android:debuggable="false"
-		android:allowBackup="true" 
-		android:allowClearUserData="true">
+    <application android:icon="@drawable/pomotodo"
+                 android:label="@string/app_name"
+                 android:debuggable="false"
+                 android:allowBackup="true"
+                 android:allowClearUserData="true">
 
-		<activity android:name=".view.Main" 
-			android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+        <activity android:name=".view.Main"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
-		<activity android:name=".view.Preferences"
-			android:label="@string/settings_title">
-		</activity>
+        <activity android:name=".view.Preferences"
+                  android:label="@string/settings_title">
+        </activity>
 
-		<activity android:name=".view.About" 
-			android:label="@string/about_title"
-			android:theme="@android:style/Theme.Dialog">
-		</activity>
+        <activity android:name=".view.About"
+                  android:label="@string/about_title"
+                  android:theme="@android:style/Theme.Dialog">
+        </activity>
 
-		<activity android:name=".view.TaskListView" 
-			android:label="@string/task_list_view_title"
-			android:theme="@android:style/Theme.Dialog">
-		</activity>
+        <activity android:name=".view.TaskListView"
+                  android:label="@string/task_list_view_title"
+                  android:theme="@android:style/Theme.Dialog">
+        </activity>
 
-	</application>
+    </application>
 
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

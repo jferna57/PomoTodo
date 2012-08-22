@@ -16,8 +16,6 @@
  */
 package net.juancarlosfernandez.pomotodo.toodledo;
 
-import java.util.List;
-
 import net.juancarlosfernandez.pomotodo.toodledo.data.AccountInfo;
 import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.IncorrectUserPasswordException;
@@ -26,26 +24,27 @@ import net.juancarlosfernandez.pomotodo.toodledo.exception.MissingPasswordExcept
 import net.juancarlosfernandez.pomotodo.toodledo.exception.ToodledoApiException;
 import net.juancarlosfernandez.pomotodo.toodledo.util.AuthToken;
 
+import java.util.List;
+
 /**
  * toodledo api implemented by this library.
- * 
  */
 public interface ToodledoApi {
 
 
-	AuthToken initialize(String username, String password, String key) throws ToodledoApiException;
+    AuthToken initialize(String username, String password, String key) throws ToodledoApiException;
 
-	Todo getTodo(AuthToken auth, int id) throws ToodledoApiException;
+    Todo getTodo(AuthToken auth, int id) throws ToodledoApiException;
 
-	boolean finishTodo(AuthToken auth, Todo newOne) throws ToodledoApiException;
+    boolean finishTodo(AuthToken auth, Todo newOne) throws ToodledoApiException;
 
-	public AccountInfo getAccountInfo(AuthToken auth) throws ToodledoApiException, InvalidSessionKeyException;
+    public AccountInfo getAccountInfo(AuthToken auth) throws ToodledoApiException, InvalidSessionKeyException;
 
-	List<Todo> getTodosList(AuthToken auth) throws ToodledoApiException;
+    List<Todo> getTodosList(AuthToken auth) throws ToodledoApiException;
 
-	List<Todo> getTodosList(AuthToken auth, Todo filter) throws ToodledoApiException;
+    List<Todo> getTodosList(AuthToken auth, Todo filter) throws ToodledoApiException;
 
-	String getUserId(String eMail, String password) throws ToodledoApiException,
-			IncorrectUserPasswordException, MissingPasswordException;
+    String getUserId(String eMail, String password) throws ToodledoApiException,
+            IncorrectUserPasswordException, MissingPasswordException;
 
 }

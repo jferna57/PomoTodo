@@ -16,34 +16,34 @@
  */
 package net.juancarlosfernandez.pomotodo.view;
 
-import net.juancarlosfernandez.pomotodo.R;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.util.Log;
+import net.juancarlosfernandez.pomotodo.R;
 
 public class About extends Activity {
-	
-	private final String TAG = this.getClass().getName();
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		
-		Log.d(TAG, "onCreate");
-		
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.about);
-		
-		PackageInfo pinfo;
-		try {
-			pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-			String versionName = pinfo.versionName;
-			this.setTitle(this.getTitle() + " - " + versionName);
 
-		} catch (NameNotFoundException e) {
-			Log.d(TAG, "ERROR in pinfo");
+    private final String TAG = this.getClass().getName();
 
-		}
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        Log.d(TAG, "onCreate");
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.about);
+
+        PackageInfo pinfo;
+        try {
+            pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            String versionName = pinfo.versionName;
+            this.setTitle(this.getTitle() + " - " + versionName);
+
+        } catch (NameNotFoundException e) {
+            Log.d(TAG, "ERROR in pinfo");
+
+        }
+    }
 }

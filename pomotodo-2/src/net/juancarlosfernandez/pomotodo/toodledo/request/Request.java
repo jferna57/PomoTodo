@@ -16,12 +16,8 @@
  */
 package net.juancarlosfernandez.pomotodo.toodledo.request;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
+import android.util.Log;
 import net.juancarlosfernandez.pomotodo.toodledo.response.Response;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -30,53 +26,55 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import android.util.Log;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public abstract class Request {
 
-	private final String TAG = this.getClass().getName();
-	private String authToken = null;
-	protected String url = null;
-	protected String xmlResponse = null;
+    private final String TAG = this.getClass().getName();
+    private String authToken = null;
+    protected String url = null;
+    protected String xmlResponse = null;
 
-	public abstract Response getResponse();
+    public abstract Response getResponse();
 
-	public void exec() {
+    public void exec() {
 
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpResponse response;
-		try {
-			this.url = encode(this.url);
-			response = httpclient.execute(new HttpGet(url));
-			HttpEntity resEntityGet = response.getEntity();
-			if (resEntityGet != null) {
-				this.xmlResponse = EntityUtils.toString(resEntityGet, "UTF-8");
-			}
-		} catch (ClientProtocolException e) {
-			Log.d(TAG, "Client Protocol Exception " + e.getMessage());
-		} catch (IOException e) {
-			Log.d(TAG, "IOException " + e.getMessage());
-		}
-	}
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpResponse response;
+        try {
+            this.url = encode(this.url);
+            response = httpclient.execute(new HttpGet(url));
+            HttpEntity resEntityGet = response.getEntity();
+            if (resEntityGet != null) {
+                this.xmlResponse = EntityUtils.toString(resEntityGet, "UTF-8");
+            }
+        } catch (ClientProtocolException e) {
+            Log.d(TAG, "Client Protocol Exception " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(TAG, "IOException " + e.getMessage());
+        }
+    }
 
-	private String encode(String url2) {
+    private String encode(String url2) {
 
-		String result = null;
-		try {
-			URI uri = new URI(url2);
-			result = uri.toString();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
+        String result = null;
+        try {
+            URI uri = new URI(url2);
+            result = uri.toString();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
-	public String getAuthToken() {
-		return authToken;
-	}
+    public String getAuthToken() {
+        return authToken;
+    }
 
-	public void setAuthToken(String authToken) {
-		this.authToken = authToken;
-	}
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
 
 }

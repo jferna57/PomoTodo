@@ -16,22 +16,22 @@
  */
 package net.juancarlosfernandez.pomotodo.util;
 
-import java.util.List;
-
 import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
+
+import java.util.List;
 
 public class StringUtils {
 
-	public static String[] todosToString(List<Todo> todoList) {
+    public static String[] todosToString(List<Todo> todoList) {
 
-		String[] todoTitles = new String[todoList.size()];
+        String[] todoTitles = new String[todoList.size()];
 
-		int i = 0;
-		for (Todo _tmp : todoList) {
-			todoTitles[i] = _tmp.getTitle();
-			i++;
-		}
-		return todoTitles;
-	}
+        int i = 0;
+        for (Todo _tmp : todoList) {
+            todoTitles[i] = _tmp.getTitle();
+            i++;
+        }
+        return todoTitles;
+    }
 
 }

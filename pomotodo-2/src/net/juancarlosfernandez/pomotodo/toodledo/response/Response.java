@@ -21,20 +21,20 @@ import net.juancarlosfernandez.pomotodo.toodledo.exception.ToodledoApiException;
 import net.juancarlosfernandez.pomotodo.toodledo.xml.ErrorParser;
 
 public abstract class Response {
-	protected String response;
-	protected ToodledoError error = null;
+    protected String response;
+    protected ToodledoError error = null;
 
-	public Response(String response) {
-		this.response = response;
-		ErrorParser errorParser = new ErrorParser(response);
-		error = errorParser.getError();
-	}
+    public Response(String response) {
+        this.response = response;
+        ErrorParser errorParser = new ErrorParser(response);
+        error = errorParser.getError();
+    }
 
-	public String getXmlResponseContent() throws ToodledoApiException {
+    public String getXmlResponseContent() throws ToodledoApiException {
 
-		if (error != null)
-			throw new ToodledoApiException(error.getMessage());
-		
-		return this.response;
-	}
+        if (error != null)
+            throw new ToodledoApiException(error.getMessage());
+
+        return this.response;
+    }
 }

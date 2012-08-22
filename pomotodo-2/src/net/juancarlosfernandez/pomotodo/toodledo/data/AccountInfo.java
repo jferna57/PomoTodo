@@ -22,27 +22,30 @@ package net.juancarlosfernandez.pomotodo.toodledo.data;
  * the user, including various timestamps that you can use to determine if any
  * further action is necessary. If the timestamps have changed, then the user's
  * account hasn't changed and you do not need to sync antything.
- * 
+ * <p/>
  * For more information : http://api.toodledo.com/2/account/doc_info.php
- * 
+ *
  * @author juancarlosf
  */
 public class AccountInfo {
 
-	private String userId;
-	private String alias;
+    private String userId;
+    private String alias;
 
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public String getAlias() {
-		return alias;
-	}
-	public void setAlias(String alias) {
-		this.alias = alias;
-	}
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 
 }

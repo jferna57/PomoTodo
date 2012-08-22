@@ -17,23 +17,21 @@
 package net.juancarlosfernandez.pomotodo.toodledo.data;
 
 /**
- * 
  * @author juancarlosf
- *
  */
 public class Constants {
-	
-	/**
-	 * A text string identifying your application.
-	 */
-	public static final String APP_ID = "pomotodo";
-	/**
-	 * A text string identifying your token application.
-	 */
-	public static final String APP_TOKEN = "api4d7a6373ef109";
-	/**
-	 * A text string identifying the device or platform that your application runs on
-	 */
-	public static final String APP_DEVICE = "android";
+
+    /**
+     * A text string identifying your application.
+     */
+    public static final String APP_ID = "pomotodo";
+    /**
+     * A text string identifying your token application.
+     */
+    public static final String APP_TOKEN = "api4d7a6373ef109";
+    /**
+     * A text string identifying the device or platform that your application runs on
+     */
+    public static final String APP_DEVICE = "android";
 
 }

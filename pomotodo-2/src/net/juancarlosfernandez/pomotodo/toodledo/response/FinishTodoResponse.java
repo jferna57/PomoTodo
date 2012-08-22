@@ -21,12 +21,12 @@ import net.juancarlosfernandez.pomotodo.toodledo.exception.ToodledoApiException;
 
 public class FinishTodoResponse extends Response {
 
-	public FinishTodoResponse(String resp) {
-		super(resp);
-	}
-	
-	public String getResponseContent() throws ToodledoApiException {
-		return null; 
-	}
+    public FinishTodoResponse(String resp) {
+        super(resp);
+    }
+
+    public String getResponseContent() throws ToodledoApiException {
+        return null;
+    }
 
 }

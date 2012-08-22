@@ -17,45 +17,45 @@
 
 package net.juancarlosfernandez.pomotodo.view;
 
-import java.util.List;
-
-import net.juancarlosfernandez.pomotodo.R;
-import net.juancarlosfernandez.pomotodo.db.DataBaseHelper;
-import net.juancarlosfernandez.pomotodo.db.Task;
-import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
-import net.juancarlosfernandez.pomotodo.util.StringUtils;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import net.juancarlosfernandez.pomotodo.R;
+import net.juancarlosfernandez.pomotodo.db.DataBaseHelper;
+import net.juancarlosfernandez.pomotodo.db.Task;
+import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
+import net.juancarlosfernandez.pomotodo.util.StringUtils;
+
+import java.util.List;
 
 /**
  * The Class TaskListView.
  */
 public class TaskListView extends ListActivity {
 
-	private Task	task;
-	List<Todo>		notSelectedTasksList;
+    private Task task;
+    List<Todo> notSelectedTasksList;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
 
-		setContentView(R.layout.task_list);
+        setContentView(R.layout.task_list);
 
-		task = new Task(new DataBaseHelper(this));
+        task = new Task(new DataBaseHelper(this));
 
-		notSelectedTasksList = task.getTasks(false);
+        notSelectedTasksList = task.getTasks(false);
 
-		if (notSelectedTasksList != null) {
-			String[] allTodoTitles = StringUtils.todosToString(notSelectedTasksList);
-			setListAdapter(new ArrayAdapter<String>(this, R.layout.my_simple_list_item_multiple_choice, allTodoTitles));
-		}
-	}
+        if (notSelectedTasksList != null) {
+            String[] allTodoTitles = StringUtils.todosToString(notSelectedTasksList);
+            setListAdapter(new ArrayAdapter<String>(this, R.layout.my_simple_list_item_multiple_choice, allTodoTitles));
+        }
+    }
 
-	public void onListItemClick(ListView parent, View v, int position, long id) {
-		Todo clickedTask = notSelectedTasksList.get(position);
-		task.changeClickedTask(clickedTask);
-	}
+    public void onListItemClick(ListView parent, View v, int position, long id) {
+        Todo clickedTask = notSelectedTasksList.get(position);
+        task.changeClickedTask(clickedTask);
+    }
 }

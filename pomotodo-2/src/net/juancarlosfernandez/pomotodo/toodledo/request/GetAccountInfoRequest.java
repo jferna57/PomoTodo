@@ -22,19 +22,19 @@ import net.juancarlosfernandez.pomotodo.toodledo.response.Response;
 import net.juancarlosfernandez.pomotodo.toodledo.util.AuthToken;
 
 public class GetAccountInfoRequest extends Request {
-	
-	private static final String URL = "http://api.toodledo.com/2/account/get.php?key=";
 
-	public GetAccountInfoRequest(AuthToken token) throws ToodledoApiException {
-		super();
-		this.url = URL + token.getKey() + ";f=xml";
-	}
+    private static final String URL = "http://api.toodledo.com/2/account/get.php?key=";
 
-	@Override
-	public Response getResponse() {
-		this.exec();
-		GetAccountInfoResponse response = new GetAccountInfoResponse(this.xmlResponse);
-		return response;
-	}
+    public GetAccountInfoRequest(AuthToken token) throws ToodledoApiException {
+        super();
+        this.url = URL + token.getKey() + ";f=xml";
+    }
+
+    @Override
+    public Response getResponse() {
+        this.exec();
+        GetAccountInfoResponse response = new GetAccountInfoResponse(this.xmlResponse);
+        return response;
+    }
 
 }

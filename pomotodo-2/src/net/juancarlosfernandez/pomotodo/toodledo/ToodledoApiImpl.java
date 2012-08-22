@@ -16,22 +16,14 @@
  */
 package net.juancarlosfernandez.pomotodo.toodledo;
 
-import java.util.List;
-
 import android.util.Log;
-
 import net.juancarlosfernandez.pomotodo.toodledo.data.AccountInfo;
 import net.juancarlosfernandez.pomotodo.toodledo.data.Todo;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.IncorrectUserPasswordException;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.InvalidSessionKeyException;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.MissingPasswordException;
 import net.juancarlosfernandez.pomotodo.toodledo.exception.ToodledoApiException;
-import net.juancarlosfernandez.pomotodo.toodledo.request.AuthorizeRequest;
-import net.juancarlosfernandez.pomotodo.toodledo.request.FinishTodoRequest;
-import net.juancarlosfernandez.pomotodo.toodledo.request.GetAccountInfoRequest;
-import net.juancarlosfernandez.pomotodo.toodledo.request.GetTodosRequest;
-import net.juancarlosfernandez.pomotodo.toodledo.request.GetUserIdRequest;
-import net.juancarlosfernandez.pomotodo.toodledo.request.Request;
+import net.juancarlosfernandez.pomotodo.toodledo.request.*;
 import net.juancarlosfernandez.pomotodo.toodledo.response.AuthorizeResponse;
 import net.juancarlosfernandez.pomotodo.toodledo.response.GetAccountInfoResponse;
 import net.juancarlosfernandez.pomotodo.toodledo.response.GetTodosResponse;
@@ -42,74 +34,76 @@ import net.juancarlosfernandez.pomotodo.toodledo.xml.AuthorizeParser;
 import net.juancarlosfernandez.pomotodo.toodledo.xml.GetTodosParser;
 import net.juancarlosfernandez.pomotodo.toodledo.xml.GetUserIdParser;
 
+import java.util.List;
+
 public class ToodledoApiImpl implements ToodledoApi {
-	
-	private final String TAG = this.getClass().getName();
 
-	public Todo getTodo(AuthToken auth, int id) throws ToodledoApiException {
-		Todo filter = new Todo();
-		filter.setId(id);
-		List<Todo> res = getTodosList(auth, filter);
-		if (res != null && res.size() > 0) {
-			return res.get(0);
-		} else {
-			return null;
-		}
-	}
+    private final String TAG = this.getClass().getName();
 
-	public List<Todo> getTodosList(AuthToken auth) throws ToodledoApiException {
-		return getTodosList(auth, null);
-	}
+    public Todo getTodo(AuthToken auth, int id) throws ToodledoApiException {
+        Todo filter = new Todo();
+        filter.setId(id);
+        List<Todo> res = getTodosList(auth, filter);
+        if (res != null && res.size() > 0) {
+            return res.get(0);
+        } else {
+            return null;
+        }
+    }
 
-	public List<Todo> getTodosList(AuthToken auth, Todo filter) throws ToodledoApiException {
-		Request getTodosRequest = new GetTodosRequest(auth, filter);
-		GetTodosResponse response = (GetTodosResponse) getTodosRequest.getResponse();
+    public List<Todo> getTodosList(AuthToken auth) throws ToodledoApiException {
+        return getTodosList(auth, null);
+    }
 
-		return new GetTodosParser(response.getXmlResponseContent()).getTodos();
-	}
+    public List<Todo> getTodosList(AuthToken auth, Todo filter) throws ToodledoApiException {
+        Request getTodosRequest = new GetTodosRequest(auth, filter);
+        GetTodosResponse response = (GetTodosResponse) getTodosRequest.getResponse();
 
-	public AuthToken initialize(String username, String password, String sessionToken) throws ToodledoApiException {
-		Log.d(TAG, "initialize");
-		
-		AuthToken authToken = null;
+        return new GetTodosParser(response.getXmlResponseContent()).getTodos();
+    }
 
-		if (sessionToken == null) {
-			Log.d(TAG, "---> NEW token");
-			Request initReq = new AuthorizeRequest(username);
-			// response gives back the token, now create the AuthToken
-			AuthorizeResponse response = (AuthorizeResponse) initReq.getResponse();
-			sessionToken = new AuthorizeParser(response.getXmlResponseContent()).getToken();
-		} else {
-			Log.d(TAG, "---> TOKEN Reused " + sessionToken);
-		}
+    public AuthToken initialize(String username, String password, String sessionToken) throws ToodledoApiException {
+        Log.d(TAG, "initialize");
 
-		authToken = new AuthToken(password, sessionToken);
-		
-		return authToken;
-	}
+        AuthToken authToken = null;
 
-	public boolean finishTodo(AuthToken auth, Todo newOne) throws ToodledoApiException {
-		FinishTodoRequest modifyRequest = new FinishTodoRequest(auth, newOne);
-		modifyRequest.getResponse();
-		return true;
-	}
+        if (sessionToken == null) {
+            Log.d(TAG, "---> NEW token");
+            Request initReq = new AuthorizeRequest(username);
+            // response gives back the token, now create the AuthToken
+            AuthorizeResponse response = (AuthorizeResponse) initReq.getResponse();
+            sessionToken = new AuthorizeParser(response.getXmlResponseContent()).getToken();
+        } else {
+            Log.d(TAG, "---> TOKEN Reused " + sessionToken);
+        }
 
-	public AccountInfo getAccountInfo(AuthToken auth) throws ToodledoApiException, InvalidSessionKeyException {
+        authToken = new AuthToken(password, sessionToken);
 
-		GetAccountInfoRequest request = new GetAccountInfoRequest(auth);
-		GetAccountInfoResponse resp = (GetAccountInfoResponse) request.getResponse();
+        return authToken;
+    }
 
-		return new AccountInfoParser(resp.getXmlResponseContent()).getAccountInfo();
-	}
+    public boolean finishTodo(AuthToken auth, Todo newOne) throws ToodledoApiException {
+        FinishTodoRequest modifyRequest = new FinishTodoRequest(auth, newOne);
+        modifyRequest.getResponse();
+        return true;
+    }
 
-	public String getUserId(String mail, String password) throws ToodledoApiException, IncorrectUserPasswordException,
-			MissingPasswordException {
+    public AccountInfo getAccountInfo(AuthToken auth) throws ToodledoApiException, InvalidSessionKeyException {
 
-		GetUserIdRequest request = new GetUserIdRequest(mail, password);
-		GetUserIdResponse response = (GetUserIdResponse) request.getResponse();
-		
-		GetUserIdParser parser = new GetUserIdParser(response.getXmlResponseContent());
-		return parser.getUserId();
-	}
+        GetAccountInfoRequest request = new GetAccountInfoRequest(auth);
+        GetAccountInfoResponse resp = (GetAccountInfoResponse) request.getResponse();
+
+        return new AccountInfoParser(resp.getXmlResponseContent()).getAccountInfo();
+    }
+
+    public String getUserId(String mail, String password) throws ToodledoApiException, IncorrectUserPasswordException,
+            MissingPasswordException {
+
+        GetUserIdRequest request = new GetUserIdRequest(mail, password);
+        GetUserIdResponse response = (GetUserIdResponse) request.getResponse();
+
+        GetUserIdParser parser = new GetUserIdParser(response.getXmlResponseContent());
+        return parser.getUserId();
+    }
 
 }

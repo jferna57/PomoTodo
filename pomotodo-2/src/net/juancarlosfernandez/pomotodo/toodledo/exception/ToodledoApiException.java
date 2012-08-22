@@ -18,12 +18,12 @@ package net.juancarlosfernandez.pomotodo.toodledo.exception;
 
 public class ToodledoApiException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3357266846561398204L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -3357266846561398204L;
 
-	public ToodledoApiException(String substring) {
-		super(substring);
-	}
+    public ToodledoApiException(String substring) {
+        super(substring);
+    }
 }

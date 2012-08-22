@@ -18,10 +18,10 @@ package net.juancarlosfernandez.pomotodo.exception;
 
 public class SettingsConfigurationException extends Exception {
 
-	public SettingsConfigurationException(String substring) {
-		super(substring);
-	}
+    public SettingsConfigurationException(String substring) {
+        super(substring);
+    }
 
-	private static final long	serialVersionUID	= 1L;
+    private static final long serialVersionUID = 1L;
 
 }

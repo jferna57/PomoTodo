@@ -1,24 +1,24 @@
 package net.juancarlosfernandez.pomotodo.toodledo.error;
 
 public class ToodledoError {
-	
-	private int id;
-	private String message;
 
-	public void setId(int value) {
-		id = value;
-	}
-	
-	public int getId(){
-		return id;
-	}
+    private int id;
+    private String message;
 
-	public void setMessage(String value) {
-		message = value;
-	}
-	
-	public String getMessage(){
-		return message;
-	}
+    public void setId(int value) {
+        id = value;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setMessage(String value) {
+        message = value;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 
 }

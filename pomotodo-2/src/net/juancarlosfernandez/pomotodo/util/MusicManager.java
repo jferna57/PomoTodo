@@ -84,9 +84,9 @@ public class MusicManager {
 
     public void resume() {
 
-        if (mp!=null)
+        if (mp != null)
             mp.release();
         mp = null;
-        isSilent= false;
+        isSilent = false;
     }
 }

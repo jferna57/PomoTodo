@@ -18,12 +18,12 @@ package net.juancarlosfernandez.pomotodo.toodledo.exception;
 
 public class IncorrectUserPasswordException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6175984480018148723L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6175984480018148723L;
 
-	public IncorrectUserPasswordException(String substring) {
-		super(substring);
-	}
+    public IncorrectUserPasswordException(String substring) {
+        super(substring);
+    }
 }

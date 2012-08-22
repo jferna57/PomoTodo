@@ -32,204 +32,212 @@ import java.util.regex.Pattern;
 /**
  * The Class Preferences.
  */
-public class Preferences extends PreferenceActivity implements OnSharedPreferenceChangeListener{
+public class Preferences extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
-	/** The Constant PREF_POMODORO_DURATION. */
-	private static final String PREF_POMODORO_DURATION = "prefPomodoroDuration";
+    /**
+     * The Constant PREF_POMODORO_DURATION.
+     */
+    private static final String PREF_POMODORO_DURATION = "prefPomodoroDuration";
 
-	/** The Constant PREF_REST_DURATION. */
-	private static final String PREF_REST_DURATION = "prefRestDuration";
+    /**
+     * The Constant PREF_REST_DURATION.
+     */
+    private static final String PREF_REST_DURATION = "prefRestDuration";
 
-	/** The Constant PREF_LONG_REST_DURATION. */
-	private static final String PREF_LONG_REST_DURATION = "prefLongRestDuration";
-	
-	/** The Constant PREF_LONG_REST_DURATION. */
-	private static final String PREF_NUM_POMODOROS_UNTIL_LONG_REST = "prefNumPomodoroUntilLongRest";
-	
-	/** The Constant PREF_VIBRATE. */
-	public static final String PREF_VIBRATE = "prefVibrate";
+    /**
+     * The Constant PREF_LONG_REST_DURATION.
+     */
+    private static final String PREF_LONG_REST_DURATION = "prefLongRestDuration";
 
-	/** The Constant PREF_RING. */
-	public static final String PREF_RING = "prefRing";
+    /**
+     * The Constant PREF_LONG_REST_DURATION.
+     */
+    private static final String PREF_NUM_POMODOROS_UNTIL_LONG_REST = "prefNumPomodoroUntilLongRest";
 
-	/** The Constant PREF_TICTAC. */
-	public static final String PREF_TICTAC = "prefTicTac";
+    /**
+     * The Constant PREF_VIBRATE.
+     */
+    public static final String PREF_VIBRATE = "prefVibrate";
 
-	/** The Constant PREF_TOODLEDO_EMAIL. */
-	public static final String PREF_TOODLEDO_EMAIL = "prefToodledoEmail";
+    /**
+     * The Constant PREF_RING.
+     */
+    public static final String PREF_RING = "prefRing";
 
-	/** The Constant PREF_TOODLEDO_PASSWORD. */
-	public static final String PREF_TOODLEDO_PASSWORD = "prefToodledoPassword";
+    /**
+     * The Constant PREF_TICTAC.
+     */
+    public static final String PREF_TICTAC = "prefTicTac";
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+    /**
+     * The Constant PREF_TOODLEDO_EMAIL.
+     */
+    public static final String PREF_TOODLEDO_EMAIL = "prefToodledoEmail";
 
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.settings);
-		SharedPreferences sp = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		sp.registerOnSharedPreferenceChangeListener(this);
-	}
+    /**
+     * The Constant PREF_TOODLEDO_PASSWORD.
+     */
+    public static final String PREF_TOODLEDO_PASSWORD = "prefToodledoPassword";
 
-	/**
-	 * Check if it is necesary ring on finish time
-	 *
-	 * @param context
-	 *            the context
-	 * @return true if music
-	 */
-	public static boolean isRing(Context context) {
+    /*
+      * (non-Javadoc)
+      *
+      * @see android.preference.PreferenceActivity#onCreate(android.os.Bundle)
+      */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		return sharedPrefs.getBoolean(PREF_RING, false);
-	}
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.settings);
+        SharedPreferences sp = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        sp.registerOnSharedPreferenceChangeListener(this);
+    }
 
-	public static boolean isTicTac(Context context) {
+    /**
+     * Check if it is necesary ring on finish time
+     *
+     * @param context the context
+     * @return true if music
+     */
+    public static boolean isRing(Context context) {
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		return sharedPrefs.getBoolean(PREF_TICTAC, false);
-	}
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        return sharedPrefs.getBoolean(PREF_RING, false);
+    }
 
-	/**
-	 * Checks if is vibrate.
-	 *
-	 * @param context
-	 *            the context
-	 * @return true, if is vibrate
-	 */
-	public static boolean isVibrate(Context context) {
+    public static boolean isTicTac(Context context) {
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		return sharedPrefs.getBoolean(PREF_VIBRATE, false);
-	}
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        return sharedPrefs.getBoolean(PREF_TICTAC, false);
+    }
 
-	/**
-	 * Gets the toodledo username.
-	 *
-	 * @param context
-	 *            the context
-	 * @return the toodledo username
-	 * @throws SettingsConfigurationException
-	 *             the settings configuration exception
-	 */
-	public static String getToodledoUsername(Context context)
-			throws SettingsConfigurationException {
+    /**
+     * Checks if is vibrate.
+     *
+     * @param context the context
+     * @return true, if is vibrate
+     */
+    public static boolean isVibrate(Context context) {
 
-		String result;
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        return sharedPrefs.getBoolean(PREF_VIBRATE, false);
+    }
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		result = sharedPrefs.getString(PREF_TOODLEDO_EMAIL, null);
+    /**
+     * Gets the toodledo username.
+     *
+     * @param context the context
+     * @return the toodledo username
+     * @throws SettingsConfigurationException the settings configuration exception
+     */
+    public static String getToodledoUsername(Context context)
+            throws SettingsConfigurationException {
 
-		if (result == null)
-			throw new SettingsConfigurationException("Username Not Set");
+        String result;
 
-		return result;
-	}
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        result = sharedPrefs.getString(PREF_TOODLEDO_EMAIL, null);
 
-	/**
-	 * Gets the toodledo password.
-	 *
-	 * @param context
-	 *            the context
-	 * @return the toodledo password
-	 * @throws SettingsConfigurationException
-	 *             the settings configuration exception
-	 */
-	public static String getToodledoPassword(Context context)
-			throws SettingsConfigurationException {
+        if (result == null)
+            throw new SettingsConfigurationException("Username Not Set");
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		String result = sharedPrefs.getString(PREF_TOODLEDO_PASSWORD, null);
+        return result;
+    }
 
-		if (result == null)
-			throw new SettingsConfigurationException("Password Not Set");
+    /**
+     * Gets the toodledo password.
+     *
+     * @param context the context
+     * @return the toodledo password
+     * @throws SettingsConfigurationException the settings configuration exception
+     */
+    public static String getToodledoPassword(Context context)
+            throws SettingsConfigurationException {
 
-		return result;
-	}
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String result = sharedPrefs.getString(PREF_TOODLEDO_PASSWORD, null);
 
-	/**
-	 * Gets the pomodoro duration.
-	 *
-	 * @param context
-	 *            the context
-	 * @return the pomodoro duration
-	 */
-	public static int getPomodoroDuration(Context context) {
+        if (result == null)
+            throw new SettingsConfigurationException("Password Not Set");
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		String result = sharedPrefs.getString(PREF_POMODORO_DURATION, "1");
+        return result;
+    }
 
-		return Integer.parseInt(result);
-	}
+    /**
+     * Gets the pomodoro duration.
+     *
+     * @param context the context
+     * @return the pomodoro duration
+     */
+    public static int getPomodoroDuration(Context context) {
 
-	/**
-	 * Gets the rest duration.
-	 *
-	 * @param context
-	 *            the context
-	 * @return the rest duration
-	 */
-	public static int getRestDuration(Context context) {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String result = sharedPrefs.getString(PREF_POMODORO_DURATION, "1");
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		String result = sharedPrefs.getString(PREF_REST_DURATION, "1");
+        return Integer.parseInt(result);
+    }
 
-		return Integer.parseInt(result);
-	}
+    /**
+     * Gets the rest duration.
+     *
+     * @param context the context
+     * @return the rest duration
+     */
+    public static int getRestDuration(Context context) {
 
-	/**
-	 * Gets the long rest duration.
-	 *
-	 * @param context
-	 *            the context
-	 * @return the long rest duration
-	 */
-	public static int getLongRestDuration(Context context) {
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String result = sharedPrefs.getString(PREF_REST_DURATION, "1");
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		String result = sharedPrefs.getString(PREF_LONG_REST_DURATION, "1");
+        return Integer.parseInt(result);
+    }
 
-		return Integer.parseInt(result);
-	}
-	
-	/**
-	 * Gets the number of pomodoros until long rest.
-	 * 
-	 * @param context
-	 *            the context
-	 * @return the long rest duration
-	 */
-	public static int getNumPomodorosUntilLongRest(Context context) {
+    /**
+     * Gets the long rest duration.
+     *
+     * @param context the context
+     * @return the long rest duration
+     */
+    public static int getLongRestDuration(Context context) {
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		String result = sharedPrefs.getString(PREF_NUM_POMODOROS_UNTIL_LONG_REST, "1");
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String result = sharedPrefs.getString(PREF_LONG_REST_DURATION, "1");
 
-		return Integer.parseInt(result);
-	}
+        return Integer.parseInt(result);
+    }
 
-	public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-		if (key.equals(PREF_TOODLEDO_EMAIL)) {
-			// Search for a valid mail pattern
-			String pattern = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$";
-			String value = sp.getString(key, null);
-			if (!Pattern.matches(pattern, value)) {
-				Toast.makeText(this,"Mail incorrect!",2);
-			}
-		}
-	}
+    /**
+     * Gets the number of pomodoros until long rest.
+     *
+     * @param context the context
+     * @return the long rest duration
+     */
+    public static int getNumPomodorosUntilLongRest(Context context) {
+
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String result = sharedPrefs.getString(PREF_NUM_POMODOROS_UNTIL_LONG_REST, "1");
+
+        return Integer.parseInt(result);
+    }
+
+    public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
+        if (key.equals(PREF_TOODLEDO_EMAIL)) {
+            // Search for a valid mail pattern
+            String pattern = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$";
+            String value = sp.getString(key, null);
+            if (!Pattern.matches(pattern, value)) {
+                Toast.makeText(this, "Mail incorrect!", 2);
+            }
+        }
+    }
 
 }

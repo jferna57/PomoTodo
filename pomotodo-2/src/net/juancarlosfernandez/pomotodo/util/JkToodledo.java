@@ -33,135 +33,136 @@ import java.util.List;
 
 public class JkToodledo {
 
-	private final String TAG = this.getClass().getName();
+    private final String TAG = this.getClass().getName();
 
-	private String email;
-	private String password;
-	private String userId;
-	private String sessionToken;
-	private AuthToken authToken;
-	private static ToodledoApi tdApi = new ToodledoApiImpl();
+    private String email;
+    private String password;
+    private String userId;
+    private String sessionToken;
+    private AuthToken authToken;
+    private static ToodledoApi tdApi = new ToodledoApiImpl();
 
-	private boolean isConnected = false;
+    private boolean isConnected = false;
 
-	// Singleton object
-	private static JkToodledo jkToodledo;
+    // Singleton object
+    private static JkToodledo jkToodledo;
 
-	private JkToodledo(String email, String password, String sessionToken) {
+    private JkToodledo(String email, String password, String sessionToken) {
 
-		this.email = email;
-		this.password = password;
-		this.sessionToken = sessionToken;
-	}
+        this.email = email;
+        this.password = password;
+        this.sessionToken = sessionToken;
+    }
 
-	public static synchronized JkToodledo getObject(String email, String password, String sessionToken) {
+    public static synchronized JkToodledo getObject(String email, String password, String sessionToken) {
 
-		if (jkToodledo == null) {
-			jkToodledo = new JkToodledo(email, password, sessionToken);
-		} else {
-			// If toodledo settings changes
-			if (!jkToodledo.email.equals(email) || !jkToodledo.password.equals(password))
-				jkToodledo = new JkToodledo(email, password, null);
-		}
-		return jkToodledo;
-	}
+        if (jkToodledo == null) {
+            jkToodledo = new JkToodledo(email, password, sessionToken);
+        } else {
+            // If toodledo settings changes
+            if (!jkToodledo.email.equals(email) || !jkToodledo.password.equals(password))
+                jkToodledo = new JkToodledo(email, password, null);
+        }
+        return jkToodledo;
+    }
 
-	public Object clone() throws CloneNotSupportedException {
-		throw new CloneNotSupportedException();
-	}
+    public Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException();
+    }
 
-	public void connect() throws ToodledoConnectionException {
-		Log.d(TAG, "connect with session Token " + sessionToken);
-		try {
-			userId = tdApi.getUserId(email, password);
-			authToken = tdApi.initialize(userId, password, sessionToken);
-			
-			if (!isSessionTokenValid()) {
-				Log.d(TAG,"----->>>>>> TOKEN not Valid");
-				authToken = tdApi.initialize(userId, password, null);
-				sessionToken = authToken.getSessionToken();
-				Log.d(TAG,"----->>>>>> NEW TOKEN " + sessionToken );
-			}
+    public void connect() throws ToodledoConnectionException {
+        Log.d(TAG, "connect with session Token " + sessionToken);
+        try {
+            userId = tdApi.getUserId(email, password);
+            authToken = tdApi.initialize(userId, password, sessionToken);
 
-			this.sessionToken = authToken.getSessionToken();
-			isConnected = true;
+            if (!isSessionTokenValid()) {
+                Log.d(TAG, "----->>>>>> TOKEN not Valid");
+                authToken = tdApi.initialize(userId, password, null);
+                sessionToken = authToken.getSessionToken();
+                Log.d(TAG, "----->>>>>> NEW TOKEN " + sessionToken);
+            }
 
-		} catch (ToodledoApiException e) {
-			throw new ToodledoConnectionException(e.getMessage());
-		} catch (IncorrectUserPasswordException e) {
-			throw new ToodledoConnectionException(e.getMessage());
-		} catch (MissingPasswordException e) {
-			throw new ToodledoConnectionException(e.getMessage());
-		}
-	}
+            this.sessionToken = authToken.getSessionToken();
+            isConnected = true;
 
-	private boolean isSessionTokenValid() {
+        } catch (ToodledoApiException e) {
+            throw new ToodledoConnectionException(e.getMessage());
+        } catch (IncorrectUserPasswordException e) {
+            throw new ToodledoConnectionException(e.getMessage());
+        } catch (MissingPasswordException e) {
+            throw new ToodledoConnectionException(e.getMessage());
+        }
+    }
 
-		if (authToken == null){
-			Log.d(TAG,"----->>>>> authToken is null");
-			return false;
-		}
-		
-		try {
-			AccountInfo accountInfo = tdApi.getAccountInfo(authToken);
+    private boolean isSessionTokenValid() {
 
-			Log.d(TAG, "Acount Info " + accountInfo.getAlias());
-			Log.d(TAG, "Acount Info " + accountInfo.getUserId());
+        if (authToken == null) {
+            Log.d(TAG, "----->>>>> authToken is null");
+            return false;
+        }
 
-		} catch (ToodledoApiException e) {
-			Log.d(TAG, "----->>>>ToodledoApiException " + e.getMessage());
-			return false;
-		} catch (InvalidSessionKeyException e) {
-			Log.d(TAG, "----->>>>InvalidSessionKeyException " + e.getMessage());
-			return false;
-		}
+        try {
+            AccountInfo accountInfo = tdApi.getAccountInfo(authToken);
 
-		return true;
-	}
+            Log.d(TAG, "Acount Info " + accountInfo.getAlias());
+            Log.d(TAG, "Acount Info " + accountInfo.getUserId());
 
-	/**
-	 * Gets the list of all todos and prints their id and their title.
-	 */
-	public List<Todo> getTodos() {
-		List<Todo> todoList = null;
+        } catch (ToodledoApiException e) {
+            Log.d(TAG, "----->>>>ToodledoApiException " + e.getMessage());
+            return false;
+        } catch (InvalidSessionKeyException e) {
+            Log.d(TAG, "----->>>>InvalidSessionKeyException " + e.getMessage());
+            return false;
+        }
 
-		try {
-			todoList = tdApi.getTodosList(authToken);
-		} catch (ToodledoApiException e) {
-			Log.d(TAG, "ERROR !! getTodos " + e.getMessage());
-		}
-		return todoList;
-	}
-	
-	/**
-	 * Finish tasks selected.
-	 * @param todos List of todos
-	 * @throws ToodledoApiException
-	 */
-	public void finishSelectedTodos(List<Todo> todos) throws ToodledoApiException{
-		
-		if (todos != null){
-			
-			for (Todo _tmp : todos){
-				_tmp.setDueTime(new TdDateTime());
-				tdApi.finishTodo(authToken, _tmp);
-			}
-		}
-	}
+        return true;
+    }
 
-	public String getSessionToken() {
-		if (authToken != null)
-			return authToken.getSessionToken();
-		else
-			return null;
-	}
+    /**
+     * Gets the list of all todos and prints their id and their title.
+     */
+    public List<Todo> getTodos() {
+        List<Todo> todoList = null;
 
-	public boolean isConnected() {
-		return isConnected;
-	}
+        try {
+            todoList = tdApi.getTodosList(authToken);
+        } catch (ToodledoApiException e) {
+            Log.d(TAG, "ERROR !! getTodos " + e.getMessage());
+        }
+        return todoList;
+    }
 
-	public void setConnected(boolean isConnected) {
-		this.isConnected = isConnected;
-	}
+    /**
+     * Finish tasks selected.
+     *
+     * @param todos List of todos
+     * @throws ToodledoApiException
+     */
+    public void finishSelectedTodos(List<Todo> todos) throws ToodledoApiException {
+
+        if (todos != null) {
+
+            for (Todo _tmp : todos) {
+                _tmp.setDueTime(new TdDateTime());
+                tdApi.finishTodo(authToken, _tmp);
+            }
+        }
+    }
+
+    public String getSessionToken() {
+        if (authToken != null)
+            return authToken.getSessionToken();
+        else
+            return null;
+    }
+
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public void setConnected(boolean isConnected) {
+        this.isConnected = isConnected;
+    }
 
 }

@@ -23,23 +23,23 @@ import net.juancarlosfernandez.pomotodo.toodledo.response.Response;
 import net.juancarlosfernandez.pomotodo.toodledo.util.AuthToken;
 
 public class GetTodosRequest extends Request {
-	
-	private static final String URL = "http://api.toodledo.com/2/tasks/get.php?key=";
 
-	public GetTodosRequest(AuthToken token, Todo filter) throws ToodledoApiException {
-		super();
-		this.url = URL + token.getKey() + ";comp=0;f=xml";
-		// TODO: Add filter options
-		if (filter != null) {
-			
-		}
-	}
+    private static final String URL = "http://api.toodledo.com/2/tasks/get.php?key=";
 
-	@Override
-	public Response getResponse() {
-		this.exec();
-		GetTodosResponse response = new GetTodosResponse(this.xmlResponse);
-		return response;
-	}
-	
+    public GetTodosRequest(AuthToken token, Todo filter) throws ToodledoApiException {
+        super();
+        this.url = URL + token.getKey() + ";comp=0;f=xml";
+        // TODO: Add filter options
+        if (filter != null) {
+
+        }
+    }
+
+    @Override
+    public Response getResponse() {
+        this.exec();
+        GetTodosResponse response = new GetTodosResponse(this.xmlResponse);
+        return response;
+    }
+
 }
