@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">SplashScreen</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_home">Home Screen</string>
+
+</resources>
