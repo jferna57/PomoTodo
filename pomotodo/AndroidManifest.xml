@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="net.juancarlosfernandez.pomotodo"
-	android:versionCode="${parsedVersion.majorVersion}${parsedVersion.minorVersion}${parsedVersion.incrementalVersion}"
+	android:versionCode="001"
 	android:versionName="${project.version}">
 
    <!--  android:versionCode="${parsedVersion.majorVersion}${parsedVersion.minorVersion}${parsedVersion.incrementalVersion}" -->
