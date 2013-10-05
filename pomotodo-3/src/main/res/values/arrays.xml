@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="prefPomodoroDurationValues">
+        <item>1</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+    </string-array>
+
+    <string-array name="prefPomodoroDuration">
+        <item>demo (1 min)</item>
+        <item>soft (15 min)</item>
+        <item>normal (20 min)</item>
+        <item>hard (25 min)</item>
+    </string-array>
+
+    <string-array name="prefRestDurationValues">
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="prefRestDuration">
+        <item>demo (1 min)</item>
+        <item>normal (5 min)</item>
+        <item>long - (10 min)</item>
+    </string-array>
+
+    <string-array name="prefLongRestDurationValues">
+        <item>1</item>
+        <item>15</item>
+        <item>20</item>
+    </string-array>
+
+    <string-array name="prefLongRestDuration">
+        <item>demo (1 min)</item>
+        <item>normal (15 min)</item>
+        <item>long (20 min)</item>
+    </string-array>
+
+
+</resources>

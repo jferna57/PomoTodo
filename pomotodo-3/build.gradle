@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 16
+    }
+    signingConfigs {
+        release
+
+        myConfig {
+            storeFile file("/opt/dev/android/keystore.jks")
+            storePassword "test.2011"
+            keyAlias "android"
+            keyPassword "test.2011"
+        }
+    }
+
+    buildTypes {
+        release
+    }
+}
+
+dependencies {
+	compile 'com.android.support:appcompat-v7:18.0.0'
+    compile 'joda-time:joda-time:2.3'
+
+}
