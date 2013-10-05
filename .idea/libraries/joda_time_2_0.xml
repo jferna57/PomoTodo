@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="joda-time-2.0">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/pomotodo-2/libs/joda-time-2.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
